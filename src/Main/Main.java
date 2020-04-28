@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Main;
-
+import Estructura.Arbol;
 /**
  *
  * @author Sebas
@@ -16,6 +16,16 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Arbol arbol = new Arbol();
+        
+        arbol.insertar(4,"naranja");
+        arbol.insertar(8,"sandia");
+        arbol.insertar(1,"pera");
+        arbol.insertar(9,"manzana");
+        arbol.insertar(7,"uva");
+       
+        
+        
     }
     
 }
