@@ -18,15 +18,16 @@ public class MetodosArboles {
         return instance;
     }
     public Arbol raiz;
-    String resultado;
+    public String resultado;
     
-      public String insertarOrdenado(String nombre, int id, Arbol aux) {
+      public String insertarOrdenado(int id, Arbol aux) {
         if (raiz == null) {
             Arbol nuevoArbol = new Arbol(id);
             raiz = nuevoArbol;
             return resultado = "insertado";
         } else {
             if (id == aux.id) {
+                
                 return resultado = "repetido";
             }
             if (id < aux.id) {
@@ -34,7 +35,7 @@ public class MetodosArboles {
                     aux.izq = new Arbol(id);
                     return resultado = "insertado";
                 } else {
-                    insertarOrdenado(nombre, id, aux.izq);
+                    insertarOrdenado(id, aux.izq);
                 }
             }
             if (id > aux.id) {
@@ -42,7 +43,7 @@ public class MetodosArboles {
                     aux.der = new Arbol(id);
                     return resultado = "insertado";
                 } else {
-                    insertarOrdenado(nombre, id, aux.der);
+                    insertarOrdenado(id, aux.der);
                 }
             }
 
@@ -95,5 +96,9 @@ public class MetodosArboles {
         System.out.println(aux.id);
         imprimirPostorden(aux.izq);
         imprimirPostorden(aux.der);
+    }
+    
+    public void llenarArbol(int n){
+        
     }
 }
