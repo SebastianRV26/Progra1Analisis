@@ -13,8 +13,8 @@ import javax.swing.DefaultListModel;
  */
 public class MetodosGrafo {
 
-    public static MetodosGrafo instance = null;
-    public static MetodosGrafo getInstance() {
+    public static MetodosGrafo instance = null; // instancia de la clase MetodosGrafo
+    public static MetodosGrafo getInstance() { // singleton para que exista únicamente una instacia de la clase
         if (instance == null) {
             instance = new MetodosGrafo();
         }
@@ -25,7 +25,7 @@ public class MetodosGrafo {
 
     vertice grafo;
 
-    public String insertarVertices(String nombre) {
+    public String insertarVertices(String nombre) { // método que inserta un vértice para el grafo
         vertice nuevo = new vertice(nombre, false);
         if (grafo == null) {
             grafo = nuevo;
@@ -35,8 +35,8 @@ public class MetodosGrafo {
         grafo = nuevo;
         return "";
     }
-
-    public vertice buscar(String nombre) {
+ 
+    public vertice buscar(String nombre) { // método que busca un vértice del grafo
         vertice aux = grafo;
         while (aux != null) {
             if (aux.nombre.equals(nombre)) {
@@ -47,7 +47,7 @@ public class MetodosGrafo {
         return null;
     }
 
-    public String insertarArco(vertice origen, vertice destino, int peso) {
+    public String insertarArco(vertice origen, vertice destino, int peso) { // método que inserta un arco para el grafo
         if (buscar(origen, destino) == null) {
             arco nuevo = new arco(peso);
             nuevo.destino = destino;
@@ -63,7 +63,7 @@ public class MetodosGrafo {
         return "No se pueden repetir arcos";
     }
 
-    public arco buscar(vertice origen, vertice destino) {
+    public arco buscar(vertice origen, vertice destino) { // método que busca un arco del grafo
         if (origen.sigA != null) {
             arco aux = origen.sigA;
             while (aux != null) {

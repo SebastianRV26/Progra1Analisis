@@ -10,17 +10,17 @@ package Estructura;
  * @author edubi
  */
 public class MetodosArboles {
-    public static MetodosArboles instance = null;
-    public static MetodosArboles getInstance() {
+    public static MetodosArboles instance = null; // instancia de la clase MetodosArboles
+    public static MetodosArboles getInstance() { // singleton para que exista únicamente una instacia de la clase
         if (instance == null) {
             instance = new MetodosArboles();
         }
         return instance;
     }
-    public Arbol raiz;
-    public String resultado;
+    public Arbol raiz; // raíz del árbol
+    public String resultado; // por si desea saber el estado del método insertarOrdenado
     
-      public String insertarOrdenado(int id, Arbol aux) {
+    public String insertarOrdenado(int id, Arbol aux) { // método que inserta un nodo en el arbol de manera ordenada
         if (raiz == null) {
             Arbol nuevoArbol = new Arbol(id);
             raiz = nuevoArbol;
@@ -50,7 +50,7 @@ public class MetodosArboles {
             return resultado;
         }
     }
-    public Arbol buscarArbol(int id, Arbol aux){
+    public Arbol buscarArbol(int id, Arbol aux){ // buscar un nodo del Arbol, aux es un auxiliar de la raíz
          if (raiz == null) {
              return null;
         } else {
@@ -71,8 +71,8 @@ public class MetodosArboles {
                 }
         }
     }
-    public void imprimirPostorden(Arbol aux){
-        if (aux == null) {
+    public void imprimirPostorden(Arbol aux){  // método que imprime los nodos: izquierda, derecha y raiz 
+        if (aux == null) { // condicion de parada para la recursividad
             return;
         }
         imprimirPostorden(aux.izq);
@@ -80,8 +80,8 @@ public class MetodosArboles {
         System.out.println(aux.id);
     }
 
-    public void imprimirOrden(Arbol aux) {
-        if (aux == null) {
+    public void imprimirOrden(Arbol aux) { // método que imprime los nodos: izquierda, raiz y derecha
+        if (aux == null) { // condicion de parada para la recursividad
             return;
         }
         imprimirOrden(aux.izq);
@@ -89,8 +89,8 @@ public class MetodosArboles {
         imprimirOrden(aux.der);
     }
 
-    public void imprimirPreOrden(Arbol aux) {
-        if (aux == null) {
+    public void imprimirPreOrden(Arbol aux) { // método que imprime los nodos: raiz izquierda y derecha
+        if (aux == null) { // condicion de parada para la recursividad
             return;
         }
         System.out.println(aux.id);
@@ -98,7 +98,7 @@ public class MetodosArboles {
         imprimirPreOrden(aux.der);
     }
     
-    public void llenarArbol(int n){
+    public void llenarArbol(int n){ // método que llena el arbol de forma ordenada
         raiz = null; // se iguala a null para poder crear otros árboles
         insertarOrdenado(n/2, raiz); 
         for (int i=0; i<=n; i++){
