@@ -6,6 +6,7 @@
 package Main;
 
 import Estructura.Arbol;
+import Estructura.MetodosArboles;
 
 /**
  *
@@ -17,7 +18,16 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        MetodosArboles ma = MetodosArboles.getInstance();
+
+        ma.insertarOrdenado(5, ma.raiz);
+        ma.insertarOrdenado(7, ma.raiz);
+        ma.insertarOrdenado(10, ma.raiz);
+        ma.insertarOrdenado(3, ma.raiz);
+        ma.insertarOrdenado(2, ma.raiz);
+        ma.insertarOrdenado(4, ma.raiz);
+        ma.insertarOrdenado(6, ma.raiz);
+        ma.amplitud(ma.raiz);
     }
-    
+
 }
