@@ -10,7 +10,7 @@ package Estructura;
  * @author edubi
  */
 public class MetodosArboles {
-     public static MetodosArboles instance = null;
+    public static MetodosArboles instance = null;
     public static MetodosArboles getInstance() {
         if (instance == null) {
             instance = new MetodosArboles();
@@ -99,6 +99,10 @@ public class MetodosArboles {
     }
     
     public void llenarArbol(int n){
-        
+        raiz = null; // se iguala a null para poder crear otros árboles
+        insertarOrdenado(n/2, raiz); 
+        for (int i=0; i<=n; i++){
+            insertarOrdenado(i, raiz);
+        }
     }
 }

@@ -7,6 +7,7 @@ package Main;
 
 import Estructura.Arbol;
 import Estructura.MetodosArboles;
+import Estructura.MetodosGrafo;
 
 /**
  *
@@ -19,13 +20,28 @@ public class Main {
      */
     public static void main(String[] args) {
         MetodosArboles metArbol = MetodosArboles.getInstance();
+        MetodosGrafo metGrafo = MetodosGrafo.getInstance();
         
-        metArbol.insertarOrdenado(5, metArbol.raiz);
-        metArbol.insertarOrdenado(10, metArbol.raiz);
-        metArbol.insertarOrdenado(4, metArbol.raiz);
+        metArbol.llenarArbol(1000);
+        Arbol raiz1 = metArbol.raiz;
         
-        metArbol.imprimirOrden(metArbol.raiz);
+        metArbol.llenarArbol(5000);
+        Arbol raiz2 = metArbol.raiz;
         
+        metArbol.llenarArbol(10000);
+        Arbol raiz3 = metArbol.raiz;
+        
+        /*
+        metArbol.llenarArbol(100000); //a partir de aquí manda java.lang.StackOverflowError
+        Arbol raiz4 = metArbol.raiz;
+        
+        metArbol.llenarArbol(200000);
+        Arbol raiz5 = metArbol.raiz;
+        
+        metArbol.llenarArbol(500000);
+        Arbol raiz6 = metArbol.raiz;
+        
+        */
     }
     
 }

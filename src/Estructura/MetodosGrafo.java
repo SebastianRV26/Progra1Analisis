@@ -13,6 +13,14 @@ import javax.swing.DefaultListModel;
  */
 public class MetodosGrafo {
 
+    public static MetodosGrafo instance = null;
+    public static MetodosGrafo getInstance() {
+        if (instance == null) {
+            instance = new MetodosGrafo();
+        }
+        return instance;
+    }
+    
     DefaultListModel<String> listModel = new DefaultListModel<>();
 
     vertice grafo;
@@ -95,7 +103,6 @@ public class MetodosGrafo {
                 listModel.addElement("Vertice: " + temp.nombre);
                 arco aux = temp.sigA;
                 while (aux != null) {
-                    //listModel.addElement("Peso: " + aux.peso);
                     listModel.addElement("Destino: " + aux.destino.nombre);
                     aux = aux.sigA;
                 }
@@ -105,54 +112,43 @@ public class MetodosGrafo {
         }
     }
 
-    public boolean eliminaArco(vertice origen, vertice destino) {
-        //origen destino y elimina el arco si existe (un arco directo)
-        //en la interfaz primero buscar vertice 
+    boolean flag = false;
 
-        arco aux = buscar(origen, destino);
-        if (aux != null) {
-            if (origen.sigA == aux) { //es el primero
-                origen.sigA = aux.sigA;
-                if (origen.sigA != null) { //si hay otro nodo
-                    aux.sigA.antA = null;
+    public void hayRuta(vertice origen, vertice destino) //metodo que imprime el inicio en profundidad
+    {
+        if ((origen == null) | (origen.marca == true)) {
+            return;
+        } else {
+            origen.marca = true;
+            arco aux = origen.sigA;
+            while (aux != null) {
+                if (aux.destino.equals(destino)) {
+                    flag = true;
                 }
-                return true;
-            }//si no es el primero
-            aux.antA.sigA = aux.sigA;
-            if (aux.sigA != null) {
-                aux.sigA.antA = aux.antA;
+                hayRuta(aux.destino, destino);
+                aux = aux.sigA;
+            }
+        }
+    }
+    
+    public boolean grafoConexo() { // Método para VERIFICAR si un grafo es conexo, luego ELIMINAR 
+        if (grafo != null) {
+            vertice aux = grafo;
+            while (aux != null) {
+                vertice aux2 = grafo;
+                while (aux2 != null) {
+                    if (aux2 != aux) {
+                        flag = false;
+                        hayRuta(aux, aux2);
+                        if (flag == false) {
+                            return false;
+                        }
+                    }
+                    aux2 = aux2.sigV;
+                }
             }
             return true;
         }
         return false;
     }
-
-    public boolean eliminarVertice(vertice verticePorEliminar) {
-        //antes de eiliminar un vertice tiene que eliminar los arcos que apuntan a este   
-        vertice aux = grafo;
-        vertice ant = grafo;
-        while (aux != null) { //se eliminan los arcos que apunten al vertice por eliminar
-            eliminaArco(aux, verticePorEliminar);
-
-            //para el anterior
-            if (aux.sigV.equals(verticePorEliminar)) {
-                ant = aux;
-            }
-            aux = aux.sigV;
-        }//eliminar el vertice
-        if (verticePorEliminar.equals(grafo)) { //si es el primero
-            grafo = verticePorEliminar.sigV;
-        }
-        ant.sigV = verticePorEliminar.sigV;
-        return true;
-    }
-
-    public void quitarMarca() {
-        vertice aux = grafo;
-        while (aux != null) {
-            aux.marca = false;
-            aux = aux.sigV;
-        }
-    }
-
 }
