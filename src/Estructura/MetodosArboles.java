@@ -5,10 +5,14 @@
  */
 package Estructura;
 
+import java.util.Collections;
+import java.util.LinkedList;
+
 /**
  *
  * @author edubi
  */
+
 public class MetodosArboles {
     public static MetodosArboles instance = null; // instancia de la clase MetodosArboles
     public static MetodosArboles getInstance() { // singleton para que exista únicamente una instacia de la clase
@@ -17,8 +21,14 @@ public class MetodosArboles {
         }
         return instance;
     }
+<<<<<<< HEAD
     public Arbol raiz; // raíz del árbol
     public String resultado; // por si desea saber el estado del método insertarOrdenado
+=======
+    public Arbol raiz;
+    String resultado;
+      int global = 0;
+>>>>>>> task_binns
     
     public String insertarOrdenado(int id, Arbol aux) { // método que inserta un nodo en el arbol de manera ordenada
         if (raiz == null) {
@@ -97,6 +107,7 @@ public class MetodosArboles {
         imprimirPreOrden(aux.izq);
         imprimirPreOrden(aux.der);
     }
+<<<<<<< HEAD
     
     public void llenarArbol(int n){ // método que llena el arbol de forma ordenada
         raiz = null; // se iguala a null para poder crear otros árboles
@@ -105,4 +116,32 @@ public class MetodosArboles {
             insertarOrdenado(i, raiz);
         }
     }
+=======
+
+
+
+    
+    public void amplitud(Arbol value){
+        Arbol aux;
+        Cola cola, colaAux;
+        if(value != null){
+            cola = new Cola();
+            colaAux = new Cola();
+            cola.Insertar(value);
+            while (!cola.colaVacia()) {                
+                colaAux.Insertar(aux = cola.Extraer());
+                if(aux.izq != null){
+                    cola.Insertar(aux.izq);
+                }
+                if(aux.der != null){
+                    cola.Insertar(aux.der);
+                }
+            }
+            colaAux.imprimirCola();
+        }
+    }
+    
+
+    
+>>>>>>> task_binns
 }
