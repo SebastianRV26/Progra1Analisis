@@ -21,10 +21,12 @@ public class MetodosGrafo {
         return instance;
     }
     
-    DefaultListModel<String> listModel = new DefaultListModel<>();
+    DefaultListModel<String> listModel = new DefaultListModel<>(); // ELIMINA
 
     vertice grafo;
-
+    public int asignaciones=0;
+    public int comparaciones=0;
+    
     public String insertarVertices(String nombre) { // método que inserta un vértice para el grafo
         vertice nuevo = new vertice(nombre, false);
         if (grafo == null) {
@@ -79,36 +81,48 @@ public class MetodosGrafo {
     void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
     {
         if ((grafo == null) | (grafo.marca == true)) {
+            comparaciones+=2;
             return;
         } else {
             grafo.marca = true;
             arco aux = grafo.sigA;
+            asignaciones+=2;
             while (aux != null) {
+                comparaciones++;
                 listModel.addElement("Origen: " + grafo.nombre);
                 listModel.addElement("Peso: " + aux.peso);
                 listModel.addElement("Destino: " + aux.destino.nombre);
                 profundidad(aux.destino);
                 aux = aux.sigA;
+                asignaciones++;
             }
+            comparaciones++;
         }
     }
 
     void amplitud(vertice grafo) // metodo para imprimir el inicio en amplitud
     {
         if (grafo == null) {
+            comparaciones++;
             System.out.println("No hay grafo");
         } else {
             vertice temp = grafo;
             while (temp != null) {
+                comparaciones++;
                 listModel.addElement("Vertice: " + temp.nombre);
                 arco aux = temp.sigA;
+                asignaciones++;
                 while (aux != null) {
                     listModel.addElement("Destino: " + aux.destino.nombre);
                     aux = aux.sigA;
+                    asignaciones++;
                 }
+                comparaciones++;
                 listModel.addElement("-----------");
                 temp = temp.sigV;
+                asignaciones++;
             }
+            comparaciones++;
         }
     }
 

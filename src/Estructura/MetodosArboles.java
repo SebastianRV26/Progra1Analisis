@@ -25,6 +25,9 @@ public class MetodosArboles {
     public String resultado; // por si desea saber el estado del método insertarOrdenado
     int global = 0;
     
+    public int asignaciones;
+    public int comparaciones;
+    
     public String insertarOrdenado(int id, Arbol aux) { // método que inserta un nodo en el arbol de manera ordenada
         if (raiz == null) {
             Arbol nuevoArbol = new Arbol(id);
