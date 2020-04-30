@@ -21,14 +21,9 @@ public class MetodosArboles {
         }
         return instance;
     }
-<<<<<<< HEAD
     public Arbol raiz; // raíz del árbol
     public String resultado; // por si desea saber el estado del método insertarOrdenado
-=======
-    public Arbol raiz;
-    String resultado;
-      int global = 0;
->>>>>>> task_binns
+    int global = 0;
     
     public String insertarOrdenado(int id, Arbol aux) { // método que inserta un nodo en el arbol de manera ordenada
         if (raiz == null) {
@@ -107,7 +102,6 @@ public class MetodosArboles {
         imprimirPreOrden(aux.izq);
         imprimirPreOrden(aux.der);
     }
-<<<<<<< HEAD
     
     public void llenarArbol(int n){ // método que llena el arbol de forma ordenada
         raiz = null; // se iguala a null para poder crear otros árboles
@@ -116,10 +110,6 @@ public class MetodosArboles {
             insertarOrdenado(i, raiz);
         }
     }
-=======
-
-
-
     
     public void amplitud(Arbol value){
         Arbol aux;
@@ -141,7 +131,4 @@ public class MetodosArboles {
         }
     }
     
-
-    
->>>>>>> task_binns
 }

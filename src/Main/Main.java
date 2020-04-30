@@ -7,10 +7,7 @@ package Main;
 
 import Estructura.Arbol;
 import Estructura.MetodosArboles;
-<<<<<<< HEAD
 import Estructura.MetodosGrafo;
-=======
->>>>>>> task_binns
 
 /**
  *
@@ -22,7 +19,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
         
@@ -46,18 +42,7 @@ public class Main {
         Arbol raiz6 = metArbol.raiz;
         
         */
-=======
-        MetodosArboles ma = MetodosArboles.getInstance();
 
-        ma.insertarOrdenado(5, ma.raiz);
-        ma.insertarOrdenado(7, ma.raiz);
-        ma.insertarOrdenado(10, ma.raiz);
-        ma.insertarOrdenado(3, ma.raiz);
-        ma.insertarOrdenado(2, ma.raiz);
-        ma.insertarOrdenado(4, ma.raiz);
-        ma.insertarOrdenado(6, ma.raiz);
-        ma.amplitud(ma.raiz);
->>>>>>> task_binns
     }
 
 }
