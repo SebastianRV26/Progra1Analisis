@@ -84,9 +84,9 @@ public class MetodosArboles {
         if (aux == null) {
             return;
         }
-        imprimirPostorden(aux.izq);
+        imprimirOrden(aux.izq);
         System.out.println(aux.id);
-        imprimirPostorden(aux.der);
+        imprimirOrden(aux.der);
     }
 
     public void imprimirPreOrden(Arbol aux) {
@@ -94,8 +94,8 @@ public class MetodosArboles {
             return;
         }
         System.out.println(aux.id);
-        imprimirPostorden(aux.izq);
-        imprimirPostorden(aux.der);
+        imprimirPreOrden(aux.izq);
+        imprimirPreOrden(aux.der);
     }
     
     public void llenarArbol(int n){
