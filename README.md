@@ -1,6 +1,6 @@
 # PrograAnalisis
 
-Acerca de: Proyecto1 del curso análisis de algoritmos
+Acerca de: Proyecto1 del curso análisis de algoritmos.
 
 ## Integrantes:
 * [Eduardo Binns](https://github.com/EduardoBinns)
