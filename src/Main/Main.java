@@ -20,9 +20,7 @@ import java.util.Scanner;
  */
 public class Main {
 
-    public static void menuAlgoritmos() {
-        Instant starts, ends;
-        
+    public static void menuAlgoritmos() {        
         MetodosArboles metArbol = MetodosArboles.getInstance();
          metArbol.llenarArbol(1000);
          Arbol raiz1 = metArbol.raiz;
