@@ -110,13 +110,20 @@ public class MetodosArboles {
         imprimirPreOrden(aux.izq);
         imprimirPreOrden(aux.der);
     }
+<<<<<<< HEAD
 
     public void llenarArbol(int n) { // método que llena el arbol de forma ordenada
         raiz = null; // se iguala a null para poder crear otros árboles
         insertarOrdenado(n / 2, raiz);
         for (int i = 0; i <= n; i++) {
+=======
+    
+    public void llenarArbol(int n){
+        for (int i=1; i<n;i++){
+>>>>>>> fd70ff2ceed7ea9303d94f341a8e40b415303178
             insertarOrdenado(i, raiz);
         }
+        
     }
 
     public void amplitud(Arbol value) {//método que imprime el árbol en amplitud
