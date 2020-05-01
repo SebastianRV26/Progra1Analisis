@@ -14,19 +14,21 @@ import javax.swing.DefaultListModel;
 public class MetodosGrafo {
 
     public static MetodosGrafo instance = null; // instancia de la clase MetodosGrafo
+
     public static MetodosGrafo getInstance() { // singleton para que exista únicamente una instacia de la clase
         if (instance == null) {
             instance = new MetodosGrafo();
         }
         return instance;
     }
-    
+
     DefaultListModel<String> listModel = new DefaultListModel<>(); // ELIMINA
 
     vertice grafo;
-    public int asignaciones=0;
-    public int comparaciones=0;
-    
+    public int asignaciones = 0;
+    public int comparaciones = 0;
+    public int lineas = 0;
+
     public String insertarVertices(int ID) { // método que inserta un vértice para el grafo
         vertice nuevo = new vertice(ID, false);
         if (grafo == null) {
@@ -37,7 +39,7 @@ public class MetodosGrafo {
         grafo = nuevo;
         return "";
     }
- 
+
     public vertice buscar(int id) { // método que busca un vértice del grafo
         vertice aux = grafo;
         while (aux != null) {
@@ -78,15 +80,15 @@ public class MetodosGrafo {
         return null;
     }
 
-    void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
+    public void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
     {
         if ((grafo == null) | (grafo.marca == true)) {
-            comparaciones+=2;
+            comparaciones += 2;
             return;
         } else {
             grafo.marca = true;
             arco aux = grafo.sigA;
-            asignaciones+=2;
+            asignaciones += 2;
             while (aux != null) {
                 comparaciones++;
                 listModel.addElement("Origen: " + grafo.ID);
@@ -100,7 +102,7 @@ public class MetodosGrafo {
         }
     }
 
-    void amplitud(vertice grafo) // metodo para imprimir el inicio en amplitud
+    public void amplitud(vertice grafo) // metodo para imprimir el inicio en amplitud
     {
         if (grafo == null) {
             comparaciones++;
@@ -126,17 +128,17 @@ public class MetodosGrafo {
         }
     }
 
-    public void llenarGrafo(int n){
-        for (int i=0; i<=n ; i++){ // primero se insertan los vertices
+    public void llenarGrafo(int n) {
+        for (int i = 0; i <= n; i++) { // primero se insertan los vertices
             insertarVertices(i);
         }
-        for (int i=0; i<=n ; i++){ // liego se insertan los arcos
-            for (int j=0; j<n ; j++){ 
+        for (int i = 0; i <= n; i++) { // liego se insertan los arcos
+            for (int j = 0; j < n; j++) {
                 insertarArco(buscar(i), buscar(j), 1);
             }
         }
     }
-    
+
     public int gradoExterno(vertice grafo) { // para saber si es fuertemente conexo, LUEGO ELIMINAR
         int cont = 0;
         if (grafo.sigA != null) {
@@ -148,7 +150,7 @@ public class MetodosGrafo {
         }
         return cont;
     }
-    
+
     public void grafoFuertementeConexo() { // Método para SABER si es un grafo fuermenete conexo luego ELIMINAR
         //se parte de que es un grafo no dirigido (no tiene flecha)
         //grafo completo, que todos sus vertices apunten a todos los vertices (excepto a él mismo xD)
@@ -160,7 +162,7 @@ public class MetodosGrafo {
         }
         vertice aux = grafo;
         while (aux != null) {
-            if (gradoExterno(aux) != vertices-1) { //los vertices tienen que tener cantidad de vertices-1 
+            if (gradoExterno(aux) != vertices - 1) { //los vertices tienen que tener cantidad de vertices-1 
                 System.out.println("No es un grafo FuertementeConexo");
                 return;
             }

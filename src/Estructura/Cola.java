@@ -14,57 +14,58 @@ import javax.swing.JOptionPane;
  * @author edubi
  */
 public class Cola {
+
     private Nodo inicioCola, finalCola;
-    String  cola = "";
+    String cola = "";
     public int asignacionesCola = 0;
-    public int comparacionesCola= 0;
+    public int comparacionesCola = 0;
+
     public Cola() {
         this.inicioCola = null;
         this.finalCola = null;
     }
-    
+
     //Cola vacia
-    
-    public boolean colaVacia(){
-        if( inicioCola == null){
-            comparacionesCola ++;
+    public boolean colaVacia() {
+        if (inicioCola == null) {
+            comparacionesCola++;
             return true;
-        }else{
+        } else {
             return false;
         }
- 
+
     }
-    
-    public void Insertar(Arbol aux){
+
+    public void Insertar(Arbol aux) {
         Nodo nuevo = new Nodo();
         nuevo.value = aux;
         nuevo.sig = null;
-        asignacionesCola +=3;
+        asignacionesCola += 3;
         if (colaVacia()) {
-            comparacionesCola ++;
+            comparacionesCola++;
             inicioCola = nuevo;
             finalCola = nuevo;
-            asignacionesCola +=2;
+            asignacionesCola += 2;
         } else {
             finalCola.sig = nuevo;
             finalCola = nuevo;
-            asignacionesCola +=2;
+            asignacionesCola += 2;
         }
     }
 
     public Arbol Extraer() {
         if (!colaVacia()) {
-             comparacionesCola ++;
-            Arbol  aux = inicioCola.value;
-            asignacionesCola ++;
+            comparacionesCola++;
+            Arbol aux = inicioCola.value;
+            asignacionesCola++;
             if (inicioCola == finalCola) {
-                comparacionesCola ++;
+                comparacionesCola++;
                 inicioCola = null;
                 finalCola = null;
-                asignacionesCola +=2;
+                asignacionesCola += 2;
             } else {
                 inicioCola = inicioCola.sig;
-                asignacionesCola +=2;
+                asignacionesCola += 2;
             }
             return aux;
         } else {
@@ -75,16 +76,16 @@ public class Cola {
     public void imprimirCola() {
         Nodo recorrido = inicioCola;
         ArrayList<Arbol> arbolesList = new ArrayList<>();
-         asignacionesCola +=2;
+        asignacionesCola += 2;
         while (recorrido != null) {
-            comparacionesCola ++;
+            comparacionesCola++;
             arbolesList.add(recorrido.value);
             recorrido = recorrido.sig;
-              asignacionesCola ++;
+            asignacionesCola++;
         }
         Collections.reverse(arbolesList);
         for (int i = 0; i < arbolesList.size(); i++) {
-            comparacionesCola ++;
+            comparacionesCola++;
             System.out.println("Arbol con id " + arbolesList.get(i).id);
         }
 

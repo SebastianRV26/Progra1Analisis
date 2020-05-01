@@ -12,9 +12,10 @@ import java.util.LinkedList;
  *
  * @author edubi
  */
-
 public class MetodosArboles {
+
     public static MetodosArboles instance = null; // instancia de la clase MetodosArboles
+
     public static MetodosArboles getInstance() { // singleton para que exista únicamente una instacia de la clase
         if (instance == null) {
             instance = new MetodosArboles();
@@ -24,10 +25,11 @@ public class MetodosArboles {
     public Arbol raiz; // raíz del árbol
     public String resultado; // por si desea saber el estado del método insertarOrdenado
     int global = 0;
-    
+
     public int asignaciones = 0;
-    public int comparaciones= 0;
-    
+    public int comparaciones = 0;
+    public int lineas = 0;
+
     public String insertarOrdenado(int id, Arbol aux) { // método que inserta un nodo en el arbol de manera ordenada
         if (raiz == null) {
             Arbol nuevoArbol = new Arbol(id);
@@ -57,9 +59,10 @@ public class MetodosArboles {
             return resultado;
         }
     }
-    public Arbol buscarArbol(int id, Arbol aux){ // buscar un nodo del Arbol, aux es un auxiliar de la raíz
-         if (raiz == null) {
-             return null;
+
+    public Arbol buscarArbol(int id, Arbol aux) { // buscar un nodo del Arbol, aux es un auxiliar de la raíz
+        if (raiz == null) {
+            return null;
         } else {
             if (id == aux.id) {
                 return aux;
@@ -71,16 +74,17 @@ public class MetodosArboles {
                     return buscarArbol(id, aux.izq);
                 }
             }
-                if (aux.der == null) {
-                    return null;
-                } else {
-                    return buscarArbol(id, aux.der);
-                }
+            if (aux.der == null) {
+                return null;
+            } else {
+                return buscarArbol(id, aux.der);
+            }
         }
     }
-    public void imprimirPostorden(Arbol aux){  // método que imprime los nodos: izquierda, derecha y raiz 
+
+    public void imprimirPostorden(Arbol aux) {  // método que imprime los nodos: izquierda, derecha y raiz 
         if (aux == null) { // condicion de parada para la recursividad
-              comparaciones++;
+            comparaciones++;
             return;
         }
         imprimirPostorden(aux.izq);
@@ -90,7 +94,7 @@ public class MetodosArboles {
 
     public void imprimirOrden(Arbol aux) { // método que imprime los nodos: izquierda, raiz y derecha
         if (aux == null) { // condicion de parada para la recursividad
-             comparaciones++;
+            comparaciones++;
             return;
         }
         imprimirOrden(aux.izq);
@@ -100,45 +104,45 @@ public class MetodosArboles {
 
     public void imprimirPreOrden(Arbol aux) { // método que imprime los nodos: raiz izquierda y derecha
         if (aux == null) { // condicion de parada para la recursividad
-              comparaciones++;
+            comparaciones++;
             return;
         }
         System.out.println(aux.id);
         imprimirPreOrden(aux.izq);
         imprimirPreOrden(aux.der);
     }
-    
-    public void llenarArbol(int n){
-        for (int i=1; i<n;i++){
+
+    public void llenarArbol(int n) {
+        for (int i = 1; i < n; i++) {
             insertarOrdenado(i, raiz);
         }
-        
+
     }
-    
-    public void amplitud(Arbol value){//método que imprime el árbol en amplitud
+
+    public void amplitud(Arbol value) {//método que imprime el árbol en amplitud
         Arbol aux;
         Cola cola, colaAux;
-        if(value != null){
-             comparaciones++;
+        if (value != null) {
+            comparaciones++;
             cola = new Cola();
             colaAux = new Cola();
-             asignaciones += 2;
+            asignaciones += 2;
             cola.Insertar(value);
-            while (!cola.colaVacia()) {              
-                 comparaciones++;
+            while (!cola.colaVacia()) {
+                comparaciones++;
                 colaAux.Insertar(aux = cola.Extraer());
-                if(aux.izq != null){
-                     comparaciones++;
+                if (aux.izq != null) {
+                    comparaciones++;
                     cola.Insertar(aux.izq);
                 }
-                if(aux.der != null){
-                     comparaciones++;
+                if (aux.der != null) {
+                    comparaciones++;
                     cola.Insertar(aux.der);
                 }
             }
             colaAux.imprimirCola();
             asignaciones += cola.asignacionesCola + colaAux.asignacionesCola;
-            comparaciones += cola.comparacionesCola +  colaAux.comparacionesCola;
+            comparaciones += cola.comparacionesCola + colaAux.comparacionesCola;
         }
     }
 }
