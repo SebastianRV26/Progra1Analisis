@@ -65,7 +65,7 @@ public class Cola {
                 asignacionesCola += 2;
             } else {
                 inicioCola = inicioCola.sig;
-                asignacionesCola += 2;
+                asignacionesCola++;
             }
             return aux;
         } else {
