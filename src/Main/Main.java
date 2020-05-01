@@ -21,7 +21,7 @@ public class Main {
     public static void main(String[] args) {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-        
+            /*
         metArbol.llenarArbol(1000);
         Arbol raiz1 = metArbol.raiz;
         
@@ -31,7 +31,7 @@ public class Main {
         metArbol.llenarArbol(10000);
         Arbol raiz3 = metArbol.raiz;
         
-        /*
+    
         metArbol.llenarArbol(100000); //a partir de aquí manda java.lang.StackOverflowError
         Arbol raiz4 = metArbol.raiz;
         
@@ -43,6 +43,15 @@ public class Main {
         
         */
 
+            metArbol.insertarOrdenado(5, metArbol.raiz);
+            metArbol.insertarOrdenado(7, metArbol.raiz);
+            metArbol.insertarOrdenado(10, metArbol.raiz);
+            metArbol.insertarOrdenado(3, metArbol.raiz);
+            metArbol.insertarOrdenado(4, metArbol.raiz);
+            metArbol.insertarOrdenado(2, metArbol.raiz);
+            metArbol.insertarOrdenado(6, metArbol.raiz);
+            metArbol.amplitud(metArbol.raiz);
+            System.out.println(metArbol.asignaciones);
+            System.out.println(metArbol.comparaciones);  
     }
-
 }
