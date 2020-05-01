@@ -25,6 +25,7 @@ public class Main {
         metArbol.llenarArbol(1000);
         Arbol raiz1 = metArbol.raiz;
         
+        metArbol.imprimirOrden(raiz1);
         metArbol.llenarArbol(5000);
         Arbol raiz2 = metArbol.raiz;
         
