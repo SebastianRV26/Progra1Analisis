@@ -9,12 +9,8 @@ package Estructura;
  *
  * @author edubi
  */
-public class Arbol { // clase árbol para árboles binarios
-
-    int id;
-    public Arbol izq, der;
-
-    public Arbol( int id) { // constructor
-        this.id = id;
-    }
+public class Nodo {
+    Arbol value;
+    Nodo sig;
+    
 }

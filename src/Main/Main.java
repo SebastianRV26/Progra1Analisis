@@ -9,6 +9,9 @@ import Estructura.*;
 import Algoritmos.*;
 import java.time.Duration;
 import java.time.Instant;
+import Estructura.Arbol;
+import Estructura.MetodosArboles;
+import Estructura.MetodosGrafo;
 
 /**
  *
@@ -98,6 +101,7 @@ public class Main {
         
         
         MetodosArboles metArbol = MetodosArboles.getInstance();
+        MetodosGrafo metGrafo = MetodosGrafo.getInstance();
         
         
         
@@ -111,5 +115,5 @@ public class Main {
     private static void Switch(String opcion) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
