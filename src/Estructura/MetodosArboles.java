@@ -99,6 +99,9 @@ public class MetodosArboles {
     }
     
     public void llenarArbol(int n){
+        for (int i=1; i<n;i++){
+            insertarOrdenado(i, raiz);
+        }
         
     }
 }
