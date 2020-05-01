@@ -23,32 +23,8 @@ public class Main {
     public static void menuAlgoritmos() {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
+       
         
-        while (true) {
-            System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
-                    + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
-                    + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
-                    + "\n 3-Algoritmo de recorrido en profundidad Grafo"
-                    + "\n 4-Algoritmo de recorrido en anchura grafo"
-                    + "\n 5-Salir");
-
-            Scanner scanObj = new Scanner(System.in);  // Create a Scanner object
-            String opcion = scanObj.nextLine();  // Read user input
-
-            if (opcion.equals("1")) {
-
-                metArbol.asignaciones = 0;
-                metArbol.comparaciones = 0;
-                metArbol.lineas = 0;
-                
-                // metArbol.profundidad();
-                
-                System.out.println("Algoritmo de recorrido en profundidad para Arbol binario"
-                        + "Cantidad de asignaciones y comparaciones para los diferentes tamaños\n");
-=======
-        Instant starts, ends;
-        
-        MetodosArboles metArbol = MetodosArboles.getInstance();
          metArbol.llenarArbol(1000);
          Arbol raiz1 = metArbol.raiz;
           metArbol.llenarArbol(5000);
@@ -190,71 +166,6 @@ public class Main {
             //System.out.println("Asignaciones: "+asignaciones);
             //System.out.println("Comparaciones: "+comparaciones);
             //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
-        }
->>>>>>> task_binns
-
-                //Instant starts = Instant.now();
-                //Algoritmo.recorridoProfundidad();
-                //Instant ends = Instant.now();
-                //System.out.println("Tamaño del arbol: "+ size);
-                //System.out.println("Asignaciones: "+asignaciones);
-                //System.out.println("Comparaciones: "+comparaciones);
-                //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
-            } else if (opcion.equals("2")) {
-                metArbol.asignaciones = 0;
-                metArbol.comparaciones = 0;
-                metArbol.lineas = 0;
-                
-                //metArbol.amplitud();
-                
-                System.out.println("Algoritmo de recorrido en Anchura para Arbol binario"
-                        + "Cantidad de asignaciones y comparaciones para los diferentes tamaños\n");
-
-                //Instant starts = Instant.now();
-                //Algoritmo.recorridoProfundidad();
-                //Instant ends = Instant.now();
-                //System.out.println("Tamaño del arbol: "+ size);
-                //System.out.println("Asignaciones: "+asignaciones);
-                //System.out.println("Comparaciones: "+comparaciones);
-                //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
-            } else if (opcion.equals("3")) {
-                metGrafo.asignaciones = 0;
-                metGrafo.comparaciones = 0;
-                metGrafo.lineas = 0;
-                
-                //metGrafo.profundidad();
-                
-                System.out.println("Algoritmo de recorrido en profundidad para grafo"
-                        + "Cantidad de asignaciones y comparaciones para los diferentes tamaños\n");
-
-                //Instant starts = Instant.now();
-                //Algoritmo.recorridoProfundidad();
-                //Instant ends = Instant.now();
-                //System.out.println("Tamaño del arbol: "+ size);
-                //System.out.println("Asignaciones: "+asignaciones);
-                //System.out.println("Comparaciones: "+comparaciones);
-                //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
-            } else if (opcion.equals("4")) {
-                metGrafo.asignaciones = 0;
-                metGrafo.comparaciones = 0;
-                metGrafo.lineas = 0;
-                
-                //metGrafo.amplitud();
-                
-                System.out.println("Algoritmo de recorrido en anchura para grafo"
-                        + "Cantidad de asignaciones y comparaciones para los diferentes tamaños\n");
-
-                //Instant starts = Instant.now();
-                //Algoritmo.recorridoProfundidad();
-                //Instant ends = Instant.now();
-                //System.out.println("Tamaño del arbol: "+ size);
-                //System.out.println("Asignaciones: "+asignaciones);
-                //System.out.println("Comparaciones: "+comparaciones);
-                //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
-            }
-            else if(opcion.equals("5")){
-                System.exit(0);
-            }
         }
     }
 
