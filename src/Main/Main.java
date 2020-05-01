@@ -28,7 +28,7 @@ public class Main {
        
        String opcion = System.console().readLine();
        
-      if(opcion == "1"){
+      if(opcion.equals("1")){
           
           //asignaciones = 0;
           //comparaciones = 0;
@@ -44,7 +44,7 @@ public class Main {
          //System.out.println("Comparaciones: "+comparaciones);
          //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
         }
-      if (opcion == "2"){
+      if (opcion.equals("2")){
           //asignaciones = 0;
           //comparaciones = 0;
           //lineas = 0;
@@ -59,7 +59,7 @@ public class Main {
          //System.out.println("Comparaciones: "+comparaciones);
          //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
       }
-      if(opcion =="3"){
+      if(opcion.equals("3")){
           //asignaciones = 0;
           //comparaciones = 0;
           //lineas = 0;
@@ -74,7 +74,7 @@ public class Main {
          //System.out.println("Comparaciones: "+comparaciones);
          //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
       }
-      if(opcion == "4"){
+      if(opcion.equals("4")){
           //asignaciones = 0;
           //comparaciones = 0;
           //lineas = 0;
