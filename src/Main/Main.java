@@ -6,7 +6,7 @@
 package Main;
 
 import Estructura.*;
-import Algoritmos.*;
+//import Algoritmos.*;
 import java.time.Duration;
 import java.time.Instant;
 import Estructura.Arbol;
