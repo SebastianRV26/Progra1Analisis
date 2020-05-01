@@ -27,8 +27,8 @@ public class MetodosGrafo {
     public int asignaciones=0;
     public int comparaciones=0;
     
-    public String insertarVertices(String nombre) { // método que inserta un vértice para el grafo
-        vertice nuevo = new vertice(nombre, false);
+    public String insertarVertices(int ID) { // método que inserta un vértice para el grafo
+        vertice nuevo = new vertice(ID, false);
         if (grafo == null) {
             grafo = nuevo;
             return "Insertado";
@@ -38,10 +38,10 @@ public class MetodosGrafo {
         return "";
     }
  
-    public vertice buscar(String nombre) { // método que busca un vértice del grafo
+    public vertice buscar(int id) { // método que busca un vértice del grafo
         vertice aux = grafo;
         while (aux != null) {
-            if (aux.nombre.equals(nombre)) {
+            if (aux.ID == id) {
                 return aux;
             }
             aux = aux.sigV;
@@ -89,9 +89,9 @@ public class MetodosGrafo {
             asignaciones+=2;
             while (aux != null) {
                 comparaciones++;
-                listModel.addElement("Origen: " + grafo.nombre);
+                listModel.addElement("Origen: " + grafo.ID);
                 listModel.addElement("Peso: " + aux.peso);
-                listModel.addElement("Destino: " + aux.destino.nombre);
+                listModel.addElement("Destino: " + aux.destino.ID);
                 profundidad(aux.destino);
                 aux = aux.sigA;
                 asignaciones++;
@@ -109,11 +109,11 @@ public class MetodosGrafo {
             vertice temp = grafo;
             while (temp != null) {
                 comparaciones++;
-                listModel.addElement("Vertice: " + temp.nombre);
+                listModel.addElement("Vertice: " + temp.ID);
                 arco aux = temp.sigA;
                 asignaciones++;
                 while (aux != null) {
-                    listModel.addElement("Destino: " + aux.destino.nombre);
+                    listModel.addElement("Destino: " + aux.destino.ID);
                     aux = aux.sigA;
                     asignaciones++;
                 }
@@ -126,43 +126,46 @@ public class MetodosGrafo {
         }
     }
 
-    boolean flag = false;
-
-    public void hayRuta(vertice origen, vertice destino) //metodo que imprime el inicio en profundidad
-    {
-        if ((origen == null) | (origen.marca == true)) {
-            return;
-        } else {
-            origen.marca = true;
-            arco aux = origen.sigA;
-            while (aux != null) {
-                if (aux.destino.equals(destino)) {
-                    flag = true;
-                }
-                hayRuta(aux.destino, destino);
-                aux = aux.sigA;
+    public void llenarGrafo(int n){
+        for (int i=0; i<=n ; i++){ // primero se insertan los vertices
+            insertarVertices(i);
+        }
+        for (int i=0; i<=n ; i++){ // liego se insertan los arcos
+            for (int j=0; j<n ; j++){ 
+                insertarArco(buscar(i), buscar(j), 1);
             }
         }
     }
     
-    public boolean grafoConexo() { // Método para VERIFICAR si un grafo es conexo, luego ELIMINAR 
-        if (grafo != null) {
-            vertice aux = grafo;
+    public int gradoExterno(vertice grafo) { // para saber si es fuertemente conexo, LUEGO ELIMINAR
+        int cont = 0;
+        if (grafo.sigA != null) {
+            arco aux = grafo.sigA;
             while (aux != null) {
-                vertice aux2 = grafo;
-                while (aux2 != null) {
-                    if (aux2 != aux) {
-                        flag = false;
-                        hayRuta(aux, aux2);
-                        if (flag == false) {
-                            return false;
-                        }
-                    }
-                    aux2 = aux2.sigV;
-                }
+                cont++;
+                aux = aux.sigA;
             }
-            return true;
         }
-        return false;
+        return cont;
+    }
+    
+    public void grafoFuertementeConexo() { // Método para SABER si es un grafo fuermenete conexo luego ELIMINAR
+        //se parte de que es un grafo no dirigido (no tiene flecha)
+        //grafo completo, que todos sus vertices apunten a todos los vertices (excepto a él mismo xD)
+        int vertices = 0;
+        vertice temp = grafo;
+        while (temp != null) { //se cuentan los vértices
+            vertices++;
+            temp = temp.sigV;
+        }
+        vertice aux = grafo;
+        while (aux != null) {
+            if (gradoExterno(aux) != vertices-1) { //los vertices tienen que tener cantidad de vertices-1 
+                System.out.println("No es un grafo FuertementeConexo");
+                return;
+            }
+            aux = aux.sigV;
+        }
+        System.out.println("Es un grafo FuertementeConexo");
     }
 }

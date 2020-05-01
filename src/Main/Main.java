@@ -103,13 +103,15 @@ public class Main {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
         
-        
-        
         //metArbol.imprimirOrden(metArbol.raiz);
         
         metArbol.llenarArbol(100);
         
-        metArbol.imprimirOrden(metArbol.raiz);
+        //metArbol.imprimirOrden(metArbol.raiz);
+        
+        metGrafo.llenarGrafo(5); // prueba
+        metGrafo.grafoFuertementeConexo(); // prueba
+        
     }
 
     private static void Switch(String opcion) {
