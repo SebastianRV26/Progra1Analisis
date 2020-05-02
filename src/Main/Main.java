@@ -64,7 +64,7 @@ public class Main {
 
             String arbolPro;
             do {
-                System.out.println("Ingrese cuál árbol desea ver: "
+                System.out.println("Ingrese cuál árbol desea ver en profundidad: "
                         + "\n 1-Arbol con tamaño 1000"
                         + "\n 2-Arbol con tamaño 5000"
                         + "\n 3-Arbol con tamaño 10000"
@@ -107,7 +107,7 @@ public class Main {
         if (opcion.equals("2")) {
             String arbolAmp;
             do {
-                System.out.println("Ingrese cuál árbol desea ver: "
+                System.out.println("Ingrese cuál árbol desea ver en amplitud: "
                         + "\n 1-Arbol con tamaño 1000"
                         + "\n 2-Arbol con tamaño 5000"
                         + "\n 3-Arbol con tamaño 10000"
@@ -194,7 +194,7 @@ public class Main {
         if (opcion.equals("4")) {
              String grafoAmp;
             do {
-                System.out.println("Ingrese cuál grafo desea ver en profundidad: "
+                System.out.println("Ingrese cuál grafo desea ver en amplitud: "
                         + "\n 1-Grafo con tamaño 1000"
                         + "\n 2-Grafo con tamaño 5000"
                         + "\n 3-Grafo con tamaño 10000"
@@ -208,22 +208,22 @@ public class Main {
 
                 switch (grafoAmp) {
                     case "1":
-                        metGrafo.datosProfundidad(grafo1);
+                        metGrafo.datosAmplitud(grafo1);
                         break;
                     case "2":
-                        metGrafo.datosProfundidad(grafo2);
+                        metGrafo.datosAmplitud(grafo2);
                         break;
                     case "3":
-                        metGrafo.datosProfundidad(grafo3);
+                        metGrafo.datosAmplitud(grafo3);
                         break;
                     case "4":
-                        metGrafo.datosProfundidad(grafo4);
+                        metGrafo.datosAmplitud(grafo4);
                         break;
                     case "5":
-                        metGrafo.datosProfundidad(grafo5);
+                        metGrafo.datosAmplitud(grafo5);
                         break;
                     case "6":
-                        metGrafo.datosProfundidad(grafo6);
+                        metGrafo.datosAmplitud(grafo6);
                         break;
                     case "7":
                         menuAlgoritmos();

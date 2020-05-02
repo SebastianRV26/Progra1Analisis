@@ -93,9 +93,10 @@ public class MetodosGrafo {
             asignaciones += 2;
             while (aux != null) {
                 comparaciones++;
-                listModel.addElement("Origen: " + grafo.ID);
-                listModel.addElement("Peso: " + aux.peso);
-                listModel.addElement("Destino: " + aux.destino.ID);
+                System.out.println("Origen: " + grafo.ID);
+                System.out.println("Peso: " + aux.peso);
+                System.out.println("Destino: " + aux.destino.ID);
+                System.out.println("-----------");
                 profundidad(aux.destino);
                 aux = aux.sigA;
                 asignaciones++;
@@ -113,16 +114,16 @@ public class MetodosGrafo {
             vertice temp = grafo;
             while (temp != null) {
                 comparaciones++;
-                listModel.addElement("Vertice: " + temp.ID);
+                System.out.println("Vertice: " + temp.ID);
                 arco aux = temp.sigA;
                 asignaciones++;
                 while (aux != null) {
-                    listModel.addElement("Destino: " + aux.destino.ID);
+                    System.out.println("Destino: " + aux.destino.ID);
                     aux = aux.sigA;
                     asignaciones++;
                 }
                 comparaciones++;
-                listModel.addElement("-----------");
+                System.out.println("-----------");
                 temp = temp.sigV;
                 asignaciones++;
             }
