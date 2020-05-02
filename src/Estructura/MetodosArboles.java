@@ -30,6 +30,7 @@ public class MetodosArboles {
 
     public int asignaciones = 0;
     public int comparaciones = 0;
+    public int lineas = 0;
 
     public String insertarOrdenado(int id, Arbol aux) { // método que inserta un nodo en el arbol de manera ordenada
         if (raiz == null) {
@@ -153,11 +154,13 @@ public class MetodosArboles {
     public void datosProfundidad(Arbol raiz) {
         asignaciones = 0;
         comparaciones = 0;
+        lineas = 0;
         Instant starts = Instant.now();
         imprimirOrden(raiz);
         Instant ends = Instant.now();
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
+        System.out.println("Lineas: " + lineas);
         System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
         System.out.println("====================================");
     }
@@ -165,11 +168,13 @@ public class MetodosArboles {
     public void datosAmplitud(Arbol raiz) {
         asignaciones = 0;
         comparaciones = 0;
+        lineas = 0;
         Instant starts = Instant.now();
         amplitud(raiz);
         Instant ends = Instant.now();
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
+        System.out.println("Lineas: " + lineas);
         System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
         System.out.println("====================================");
     }

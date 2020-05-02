@@ -23,15 +23,13 @@ public class Main {
     public static void menuAlgoritmos() {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-       
-        
-         metArbol.llenarArbol(1000);
-         Arbol raiz1 = metArbol.raiz;
-          metArbol.llenarArbol(5000);
-         Arbol raiz2 = metArbol.raiz;
-          metArbol.llenarArbol(10000);
-         Arbol raiz3 = metArbol.raiz;
-         
+
+        metArbol.llenarArbol(1000);
+        Arbol raiz1 = metArbol.raiz;
+        metArbol.llenarArbol(5000);
+        Arbol raiz2 = metArbol.raiz;
+        metArbol.llenarArbol(10000);
+        Arbol raiz3 = metArbol.raiz;
         // metArbol.llenarArbol(100000);
         Arbol raiz4 = metArbol.raiz;
         //metArbol.llenarArbol(200000);
@@ -39,6 +37,19 @@ public class Main {
         // metArbol.llenarArbol(500000);
         Arbol raiz6 = metArbol.raiz;
 
+        metGrafo.llenarGrafo(1000);
+        vertice grafo1 = metGrafo.grafo;
+        metGrafo.llenarGrafo(5000);
+        vertice grafo2 = metGrafo.grafo;
+        metGrafo.llenarGrafo(10000);
+        vertice grafo3 = metGrafo.grafo;
+        metGrafo.llenarGrafo(100000);
+        vertice grafo4 = metGrafo.grafo;
+        metGrafo.llenarGrafo(200000);
+        vertice grafo5 = metGrafo.grafo;
+        metGrafo.llenarGrafo(500000);
+        vertice grafo6 = metGrafo.grafo;
+        
         System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
                 + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
                 + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
@@ -95,7 +106,7 @@ public class Main {
         }
         if (opcion.equals("2")) {
             String arbolAmp;
-               do {
+            do {
                 System.out.println("Ingrese cuál árbol desea ver: "
                         + "\n 1-Arbol con tamaño 1000"
                         + "\n 2-Arbol con tamaño 5000"
@@ -135,12 +146,9 @@ public class Main {
                         break;
                 }
             } while (!"7".equals(arbolAmp));
-        
+
         }
         if (opcion.equals("3")) {
-            //asignaciones = 0;
-            //comparaciones = 0;
-            //lineas = 0;
             System.out.println("Algoritmo de recorrido en profundidad para grafo"
                     + "Cantidad de asignaciones y comparaciones para los diferentes tamaños");
 
@@ -153,9 +161,6 @@ public class Main {
             //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
         }
         if (opcion.equals("4")) {
-            //asignaciones = 0;
-            //comparaciones = 0;
-            //lineas = 0;
             System.out.println("Algoritmo de recorrido en anchura para grafo"
                     + "Cantidad de asignaciones y comparaciones para los diferentes tamaños");
 
@@ -181,10 +186,13 @@ public class Main {
         metArbol.llenarArbol(100);
 
         //metArbol.imprimirOrden(metArbol.raiz);
-        metGrafo.llenarGrafo(5); // prueba
-        metGrafo.grafoFuertementeConexo(); // prueba
 
-        menuAlgoritmos();
+        //metGrafo.llenarGrafo(5000);
+        //vertice grafo3 = metGrafo.grafo;
+        
+        metGrafo.grafoFuertementeConexo(grafo3);
+        
+        //menuAlgoritmos(); 
         //metArbol.imprimirOrden(metArbol.raiz);
 
         // metArbol.llenarArbol(100);

@@ -5,6 +5,8 @@
  */
 package Estructura;
 
+import java.time.Duration;
+import java.time.Instant;
 import javax.swing.DefaultListModel;
 
 /**
@@ -24,7 +26,7 @@ public class MetodosGrafo {
 
     DefaultListModel<String> listModel = new DefaultListModel<>(); // ELIMINA
 
-    vertice grafo;
+    public vertice grafo;
     public int asignaciones = 0;
     public int comparaciones = 0;
     public int lineas = 0;
@@ -139,6 +141,43 @@ public class MetodosGrafo {
         }
     }
 
+    public void quitarMarca(vertice grafo) {
+        vertice aux = grafo;
+        while (aux != null) {
+            aux.marca = false;
+            aux = aux.sigV;
+        }
+    }
+
+    public void datosProfundidad(vertice grafo) {
+        asignaciones = 0;
+        comparaciones = 0;
+        lineas = 0;
+        Instant starts = Instant.now();
+        profundidad(grafo);
+        Instant ends = Instant.now();
+        quitarMarca(grafo); // por si deea volver a llamar a profundidad
+        System.out.println("Asignaciones: " + asignaciones);
+        System.out.println("Comparaciones: " + comparaciones);
+        System.out.println("Lineas: " + lineas);
+        System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
+        System.out.println("====================================");
+    }
+
+    public void datosAmplitud(Arbol raiz) {
+        asignaciones = 0;
+        comparaciones = 0;
+        lineas = 0;
+        Instant starts = Instant.now();
+        amplitud(grafo);
+        Instant ends = Instant.now();
+        System.out.println("Asignaciones: " + asignaciones);
+        System.out.println("Comparaciones: " + comparaciones);
+        System.out.println("Lineas: " + lineas);
+        System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
+        System.out.println("====================================");
+    }
+
     public int gradoExterno(vertice grafo) { // para saber si es fuertemente conexo, LUEGO ELIMINAR
         int cont = 0;
         if (grafo.sigA != null) {
@@ -151,7 +190,7 @@ public class MetodosGrafo {
         return cont;
     }
 
-    public void grafoFuertementeConexo() { // Método para SABER si es un grafo fuermenete conexo luego ELIMINAR
+    public void grafoFuertementeConexo(vertice grafo) { // Método para SABER si es un grafo fuermenete conexo luego ELIMINAR
         //se parte de que es un grafo no dirigido (no tiene flecha)
         //grafo completo, que todos sus vertices apunten a todos los vertices (excepto a él mismo xD)
         int vertices = 0;
