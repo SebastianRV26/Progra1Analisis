@@ -164,7 +164,7 @@ public class MetodosGrafo {
         System.out.println("====================================");
     }
 
-    public void datosAmplitud(Arbol raiz) {
+    public void datosAmplitud(vertice grafo) {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
