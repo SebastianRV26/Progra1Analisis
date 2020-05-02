@@ -20,15 +20,18 @@ import java.util.Scanner;
  */
 public class Main {
 
-    public static void menuAlgoritmos() {        
+
+    public static void menuAlgoritmos() {
+
         MetodosArboles metArbol = MetodosArboles.getInstance();
-         metArbol.llenarArbol(1000);
-         Arbol raiz1 = metArbol.raiz;
-          metArbol.llenarArbol(5000);
-         Arbol raiz2 = metArbol.raiz;
-          metArbol.llenarArbol(10000);
-         Arbol raiz3 = metArbol.raiz;
-         
+        MetodosGrafo metGrafo = MetodosGrafo.getInstance();
+
+        //metArbol.llenarArbol(1000);
+        Arbol raiz1 = metArbol.raiz;
+     ////   metArbol.llenarArbol(5000);
+        Arbol raiz2 = metArbol.raiz;
+     //   metArbol.llenarArbol(10000);
+        Arbol raiz3 = metArbol.raiz;
         // metArbol.llenarArbol(100000);
         Arbol raiz4 = metArbol.raiz;
         //metArbol.llenarArbol(200000);
@@ -36,6 +39,19 @@ public class Main {
         // metArbol.llenarArbol(500000);
         Arbol raiz6 = metArbol.raiz;
 
+    //    metGrafo.llenarGrafo(1000);
+        vertice grafo1 = metGrafo.grafo;
+       //metGrafo.llenarGrafo(5000);
+        vertice grafo2 = metGrafo.grafo;
+       metGrafo.llenarGrafo(10000);
+        vertice grafo3 = metGrafo.grafo;
+       // metGrafo.llenarGrafo(100000);
+        vertice grafo4 = metGrafo.grafo;
+       // metGrafo.llenarGrafo(200000);
+        vertice grafo5 = metGrafo.grafo;
+     //   metGrafo.llenarGrafo(500000);
+        vertice grafo6 = metGrafo.grafo;
+        
         System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
                 + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
                 + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
@@ -50,7 +66,7 @@ public class Main {
 
             String arbolPro;
             do {
-                System.out.println("Ingrese cuál árbol desea ver: "
+                System.out.println("Ingrese cuál árbol desea ver en profundidad: "
                         + "\n 1-Arbol con tamaño 1000"
                         + "\n 2-Arbol con tamaño 5000"
                         + "\n 3-Arbol con tamaño 10000"
@@ -92,8 +108,8 @@ public class Main {
         }
         if (opcion.equals("2")) {
             String arbolAmp;
-               do {
-                System.out.println("Ingrese cuál árbol desea ver: "
+            do {
+                System.out.println("Ingrese cuál árbol desea ver en amplitud: "
                         + "\n 1-Arbol con tamaño 1000"
                         + "\n 2-Arbol con tamaño 5000"
                         + "\n 3-Arbol con tamaño 10000"
@@ -132,39 +148,94 @@ public class Main {
                         break;
                 }
             } while (!"7".equals(arbolAmp));
-        
+
         }
         if (opcion.equals("3")) {
-            //asignaciones = 0;
-            //comparaciones = 0;
-            //lineas = 0;
-            System.out.println("Algoritmo de recorrido en profundidad para grafo"
-                    + "Cantidad de asignaciones y comparaciones para los diferentes tamaños");
+            String grafoPro;
+            do {
+                System.out.println("Ingrese cuál grafo desea ver en profundidad: "
+                        + "\n 1-Grafo con tamaño 1000"
+                        + "\n 2-Grafo con tamaño 5000"
+                        + "\n 3-Grafo con tamaño 10000"
+                        + "\n 4-Grafo con tamaño 100000"
+                        + "\n 5-Grafo con tamaño 200000"
+                        + "\n 6-Grafo con tamaño 500000"
+                        + "\n 7-Volver"
+                        + "\n ====================================");
 
-            //Instant starts = Instant.now();
-            //Algoritmo.recorridoProfundidad();
-            //Instant ends = Instant.now();
-            //System.out.println("Tamaño del arbol: "+ size);
-            //System.out.println("Asignaciones: "+asignaciones);
-            //System.out.println("Comparaciones: "+comparaciones);
-            //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
+                grafoPro = scanObj.nextLine();  // Read user input
+
+                switch (grafoPro) {
+                    case "1":
+                        metGrafo.datosProfundidad(grafo1);
+                        break;
+                    case "2":
+                        metGrafo.datosProfundidad(grafo2);
+                        break;
+                    case "3":
+                        metGrafo.datosProfundidad(grafo3);
+                        break;
+                    case "4":
+                        metGrafo.datosProfundidad(grafo4);
+                        break;
+                    case "5":
+                        metGrafo.datosProfundidad(grafo5);
+                        break;
+                    case "6":
+                        metGrafo.datosProfundidad(grafo6);
+                        break;
+                    case "7":
+                        menuAlgoritmos();
+                        break;
+                    default:
+                        System.out.println("Ingreso un dato no valido");
+                        break;
+                }
+            } while (!"7".equals(grafoPro));
         }
         if (opcion.equals("4")) {
-            //asignaciones = 0;
-            //comparaciones = 0;
-            //lineas = 0;
-            System.out.println("Algoritmo de recorrido en anchura para grafo"
-                    + "Cantidad de asignaciones y comparaciones para los diferentes tamaños");
+             String grafoAmp;
+            do {
+                System.out.println("Ingrese cuál grafo desea ver en amplitud: "
+                        + "\n 1-Grafo con tamaño 1000"
+                        + "\n 2-Grafo con tamaño 5000"
+                        + "\n 3-Grafo con tamaño 10000"
+                        + "\n 4-Grafo con tamaño 100000"
+                        + "\n 5-Grafo con tamaño 200000"
+                        + "\n 6-Grafo con tamaño 500000"
+                        + "\n 7-Volver"
+                        + "\n ====================================");
 
-            //Instant starts = Instant.now();
-            //Algoritmo.recorridoProfundidad();
-            //Instant ends = Instant.now();
-            //System.out.println("Tamaño del arbol: "+ size);
-            //System.out.println("Asignaciones: "+asignaciones);
-            //System.out.println("Comparaciones: "+comparaciones);
-            //System.out.println("Tiempo de ejecucion: "+Duration.between(starts, ends));
+                grafoAmp = scanObj.nextLine();  // Read user input
+
+                switch (grafoAmp) {
+                    case "1":
+                        metGrafo.datosAmplitud(grafo1);
+                        break;
+                    case "2":
+                        metGrafo.datosAmplitud(grafo2);
+                        break;
+                    case "3":
+                        metGrafo.datosAmplitud(grafo3);
+                        break;
+                    case "4":
+                        metGrafo.datosAmplitud(grafo4);
+                        break;
+                    case "5":
+                        metGrafo.datosAmplitud(grafo5);
+                        break;
+                    case "6":
+                        metGrafo.datosAmplitud(grafo6);
+                        break;
+                    case "7":
+                        menuAlgoritmos();
+                        break;
+                    default:
+                        System.out.println("Ingreso un dato no valido");
+                        break;
+                }
+            } while (!"7".equals(grafoAmp));
         }
-
     }
 
     /**
@@ -172,13 +243,6 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        MetodosArboles metArbol = MetodosArboles.getInstance();
-        MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-
         menuAlgoritmos();
-        //metArbol.imprimirOrden(metArbol.raiz);
-
-        // metArbol.llenarArbol(100);
-        // metArbol.imprimirOrden(metArbol.raiz);
     }
 }

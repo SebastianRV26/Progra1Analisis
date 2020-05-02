@@ -10,7 +10,8 @@ package Estructura;
  * @author edubi
  */
 public class Nodo {
+
     Arbol value;
     Nodo sig;
-    
+
 }

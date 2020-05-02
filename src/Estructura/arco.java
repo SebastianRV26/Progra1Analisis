@@ -10,10 +10,12 @@ package Estructura;
  * @author Sebas
  */
 public class arco { //arco de un grafo
-    public arco antA,sigA;//Siguiente arco
+
+    public arco antA, sigA;//Siguiente arco
     public vertice destino;//Como es un grafo multilista, para hacer referencia al destino
     public int peso;//Peso del arco
-    public arco(int p){ // constructor
+
+    public arco(int p) { // constructor
         peso = p;
     }
 }

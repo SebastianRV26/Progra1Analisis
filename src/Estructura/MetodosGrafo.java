@@ -5,6 +5,8 @@
  */
 package Estructura;
 
+import java.time.Duration;
+import java.time.Instant;
 import javax.swing.DefaultListModel;
 
 /**
@@ -14,21 +16,23 @@ import javax.swing.DefaultListModel;
 public class MetodosGrafo {
 
     public static MetodosGrafo instance = null; // instancia de la clase MetodosGrafo
+
     public static MetodosGrafo getInstance() { // singleton para que exista únicamente una instacia de la clase
         if (instance == null) {
             instance = new MetodosGrafo();
         }
         return instance;
     }
-    
+
     DefaultListModel<String> listModel = new DefaultListModel<>(); // ELIMINA
 
-    vertice grafo;
-    public int asignaciones=0;
-    public int comparaciones=0;
-    
-    public String insertarVertices(String nombre) { // método que inserta un vértice para el grafo
-        vertice nuevo = new vertice(nombre, false);
+    public vertice grafo;
+    public int asignaciones = 0;
+    public int comparaciones = 0;
+    public int lineas = 0;
+
+    public String insertarVertices(int ID) { // método que inserta un vértice para el grafo
+        vertice nuevo = new vertice(ID, false);
         if (grafo == null) {
             grafo = nuevo;
             return "Insertado";
@@ -37,11 +41,11 @@ public class MetodosGrafo {
         grafo = nuevo;
         return "";
     }
- 
-    public vertice buscar(String nombre) { // método que busca un vértice del grafo
+
+    public vertice buscar(int id) { // método que busca un vértice del grafo
         vertice aux = grafo;
         while (aux != null) {
-            if (aux.nombre.equals(nombre)) {
+            if (aux.ID == id) {
                 return aux;
             }
             aux = aux.sigV;
@@ -78,20 +82,21 @@ public class MetodosGrafo {
         return null;
     }
 
-    void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
+    public void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
     {
         if ((grafo == null) | (grafo.marca == true)) {
-            comparaciones+=2;
+            comparaciones += 2;
             return;
         } else {
             grafo.marca = true;
             arco aux = grafo.sigA;
-            asignaciones+=2;
+            asignaciones += 2;
             while (aux != null) {
                 comparaciones++;
-                listModel.addElement("Origen: " + grafo.nombre);
-                listModel.addElement("Peso: " + aux.peso);
-                listModel.addElement("Destino: " + aux.destino.nombre);
+                System.out.println("Origen: " + grafo.ID);
+                System.out.println("Peso: " + aux.peso);
+                System.out.println("Destino: " + aux.destino.ID);
+                System.out.println("-----------");
                 profundidad(aux.destino);
                 aux = aux.sigA;
                 asignaciones++;
@@ -100,7 +105,7 @@ public class MetodosGrafo {
         }
     }
 
-    void amplitud(vertice grafo) // metodo para imprimir el inicio en amplitud
+    public void amplitud(vertice grafo) // metodo para imprimir el inicio en amplitud
     {
         if (grafo == null) {
             comparaciones++;
@@ -109,16 +114,16 @@ public class MetodosGrafo {
             vertice temp = grafo;
             while (temp != null) {
                 comparaciones++;
-                listModel.addElement("Vertice: " + temp.nombre);
+                System.out.println("Vertice: " + temp.ID);
                 arco aux = temp.sigA;
                 asignaciones++;
                 while (aux != null) {
-                    listModel.addElement("Destino: " + aux.destino.nombre);
+                    System.out.println("Destino: " + aux.destino.ID);
                     aux = aux.sigA;
                     asignaciones++;
                 }
                 comparaciones++;
-                listModel.addElement("-----------");
+                System.out.println("-----------");
                 temp = temp.sigV;
                 asignaciones++;
             }
@@ -126,43 +131,83 @@ public class MetodosGrafo {
         }
     }
 
-    boolean flag = false;
-
-    public void hayRuta(vertice origen, vertice destino) //metodo que imprime el inicio en profundidad
-    {
-        if ((origen == null) | (origen.marca == true)) {
-            return;
-        } else {
-            origen.marca = true;
-            arco aux = origen.sigA;
-            while (aux != null) {
-                if (aux.destino.equals(destino)) {
-                    flag = true;
-                }
-                hayRuta(aux.destino, destino);
-                aux = aux.sigA;
+    public void llenarGrafo(int n) {
+        for (int i = 0; i <= n; i++) { // primero se insertan los vertices
+            insertarVertices(i);
+        }
+        for (int i = 0; i <= n; i++) { // liego se insertan los arcos
+            for (int j = 0; j < n; j++) {
+                insertarArco(buscar(i), buscar(j), 1);
             }
         }
     }
-    
-    public boolean grafoConexo() { // Método para VERIFICAR si un grafo es conexo, luego ELIMINAR 
-        if (grafo != null) {
-            vertice aux = grafo;
-            while (aux != null) {
-                vertice aux2 = grafo;
-                while (aux2 != null) {
-                    if (aux2 != aux) {
-                        flag = false;
-                        hayRuta(aux, aux2);
-                        if (flag == false) {
-                            return false;
-                        }
-                    }
-                    aux2 = aux2.sigV;
-                }
-            }
-            return true;
+
+    public void quitarMarca(vertice grafo) {
+        vertice aux = grafo;
+        while (aux != null) {
+            aux.marca = false;
+            aux = aux.sigV;
         }
-        return false;
+    }
+
+    public void datosProfundidad(vertice grafo) {
+        asignaciones = 0;
+        comparaciones = 0;
+        lineas = 0;
+        Instant starts = Instant.now();
+        profundidad(grafo);
+        Instant ends = Instant.now();
+        quitarMarca(grafo); // por si deea volver a llamar a profundidad
+        System.out.println("Asignaciones: " + asignaciones);
+        System.out.println("Comparaciones: " + comparaciones);
+        System.out.println("Lineas: " + lineas);
+        System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
+        System.out.println("====================================");
+    }
+
+    public void datosAmplitud(vertice grafo) {
+        asignaciones = 0;
+        comparaciones = 0;
+        lineas = 0;
+        Instant starts = Instant.now();
+        amplitud(grafo);
+        Instant ends = Instant.now();
+        System.out.println("Asignaciones: " + asignaciones);
+        System.out.println("Comparaciones: " + comparaciones);
+        System.out.println("Lineas: " + lineas);
+        System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
+        System.out.println("====================================");
+    }
+
+    public int gradoExterno(vertice grafo) { // para saber si es fuertemente conexo, LUEGO ELIMINAR
+        int cont = 0;
+        if (grafo.sigA != null) {
+            arco aux = grafo.sigA;
+            while (aux != null) {
+                cont++;
+                aux = aux.sigA;
+            }
+        }
+        return cont;
+    }
+
+    public void grafoFuertementeConexo(vertice grafo) { // Método para SABER si es un grafo fuermenete conexo luego ELIMINAR
+        //se parte de que es un grafo no dirigido (no tiene flecha)
+        //grafo completo, que todos sus vertices apunten a todos los vertices (excepto a él mismo xD)
+        int vertices = 0;
+        vertice temp = grafo;
+        while (temp != null) { //se cuentan los vértices
+            vertices++;
+            temp = temp.sigV;
+        }
+        vertice aux = grafo;
+        while (aux != null) {
+            if (gradoExterno(aux) != vertices - 1) { //los vertices tienen que tener cantidad de vertices-1 
+                System.out.println("No es un grafo FuertementeConexo");
+                return;
+            }
+            aux = aux.sigV;
+        }
+        System.out.println("Es un grafo FuertementeConexo");
     }
 }
