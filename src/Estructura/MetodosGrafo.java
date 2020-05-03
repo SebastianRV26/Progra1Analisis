@@ -84,7 +84,7 @@ public class MetodosGrafo {
 
     public void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
     {
-        if ((grafo == null) | (grafo.marca == true)) {
+        if ((grafo == null) || (grafo.marca == true)) {
             comparaciones += 2;
             return;
         } else {
@@ -93,9 +93,10 @@ public class MetodosGrafo {
             asignaciones += 2;
             while (aux != null) {
                 comparaciones++;
-                listModel.addElement("Origen: " + grafo.ID);
-                listModel.addElement("Peso: " + aux.peso);
-                listModel.addElement("Destino: " + aux.destino.ID);
+                System.out.println("Origen: " + grafo.ID);
+                System.out.println("Peso: " + aux.peso);
+                System.out.println("Destino: " + aux.destino.ID);
+                System.out.println("-----------");
                 profundidad(aux.destino);
                 aux = aux.sigA;
                 asignaciones++;
@@ -113,16 +114,16 @@ public class MetodosGrafo {
             vertice temp = grafo;
             while (temp != null) {
                 comparaciones++;
-                listModel.addElement("Vertice: " + temp.ID);
+                System.out.println("Vertice: " + temp.ID);
                 arco aux = temp.sigA;
                 asignaciones++;
                 while (aux != null) {
-                    listModel.addElement("Destino: " + aux.destino.ID);
+                    System.out.println("Destino: " + aux.destino.ID);
                     aux = aux.sigA;
                     asignaciones++;
                 }
                 comparaciones++;
-                listModel.addElement("-----------");
+                System.out.println("-----------");
                 temp = temp.sigV;
                 asignaciones++;
             }
@@ -130,13 +131,13 @@ public class MetodosGrafo {
         }
     }
 
-    public void llenarGrafo(int n) {
+    public void llenarGrafo(int n) { // método que llena el grafo fuertemente conexo
         for (int i = 0; i <= n; i++) { // primero se insertan los vertices
             insertarVertices(i);
         }
         for (int i = 0; i <= n; i++) { // liego se insertan los arcos
-            for (int j = 0; j < n; j++) {
-                insertarArco(buscar(i), buscar(j), 1);
+            for (int j = 0; j < n; j++) { // para que el grafo sea fuertemente conexo 
+                insertarArco(buscar(i), buscar(j), 1); // INCLUIR PESO RANDOM, preguntar su tamaño
             }
         }
     }
@@ -149,7 +150,8 @@ public class MetodosGrafo {
         }
     }
 
-    public void datosProfundidad(vertice grafo) {
+    public void datosProfundidad(vertice grafo) { // método que llama a la profundidad para grafo y muestra sus asignaciones, 
+        //comparaciones, lineas de código ejecutadas y su duración
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
@@ -164,7 +166,8 @@ public class MetodosGrafo {
         System.out.println("====================================");
     }
 
-    public void datosAmplitud(Arbol raiz) {
+    public void datosAmplitud(vertice grafo) { // método que llama a la amplitud para grafo y muestra sus asignaciones, 
+        //comparaciones, lineas de código ejecutadas y su duración
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
