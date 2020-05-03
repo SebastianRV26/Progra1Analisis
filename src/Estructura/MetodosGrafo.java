@@ -84,7 +84,7 @@ public class MetodosGrafo {
 
     public void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
     {
-        if ((grafo == null) | (grafo.marca == true)) {
+        if ((grafo == null) || (grafo.marca == true)) {
             comparaciones += 2;
             return;
         } else {

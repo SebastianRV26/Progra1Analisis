@@ -111,6 +111,7 @@ public class MetodosArboles {
         imprimirPreOrden(aux.izq);
         imprimirPreOrden(aux.der);
     }
+
     public void llenarArbol(int n) { // método que llena el arbol de forma ordenada
         raiz = null; // se iguala a null para poder crear otros árboles
         insertarOrdenado(n / 2, raiz);
@@ -148,7 +149,7 @@ public class MetodosArboles {
             comparaciones += totalComCola;
         }
     }
-    
+
     public void datosProfundidad(Arbol raiz) {
         asignaciones = 0;
         comparaciones = 0;
@@ -162,7 +163,7 @@ public class MetodosArboles {
         System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
         System.out.println("====================================");
     }
-        
+
     public void datosAmplitud(Arbol raiz) {
         asignaciones = 0;
         comparaciones = 0;

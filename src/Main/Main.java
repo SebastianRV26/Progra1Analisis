@@ -19,7 +19,7 @@ public class Main {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
 
-        int[] tamannio = {1000, 5000, 10000, 100000, 200000, 500000};
+        int[] tamannio = {1000, 5000, 10000, 100000, 200000, 500000}; // array con los tamaños para los árboles y grafos
 
         metArbol.llenarArbol(1000);
         //metArbol.llenarArbol(1000);
@@ -38,23 +38,23 @@ public class Main {
         //    metGrafo.llenarGrafo(1000);
         vertice grafo1 = metGrafo.grafo;
         metGrafo.grafo = null;
-        
-        metGrafo.llenarGrafo(5000); //OutOfMemoryError
+
+        //metGrafo.llenarGrafo(5000); //OutOfMemoryError
         vertice grafo2 = metGrafo.grafo;
         metGrafo.grafo = null;
-        metGrafo.llenarGrafo(10000);
+        //metGrafo.llenarGrafo(10000);
         vertice grafo3 = metGrafo.grafo;
         metGrafo.grafo = null;
-        metGrafo.llenarGrafo(100000);
+        //metGrafo.llenarGrafo(100000);
         vertice grafo4 = metGrafo.grafo;
         metGrafo.grafo = null;
-        metGrafo.llenarGrafo(200000);
+        //metGrafo.llenarGrafo(200000);
         vertice grafo5 = metGrafo.grafo;
         metGrafo.grafo = null;
-        metGrafo.llenarGrafo(500000);
+        //metGrafo.llenarGrafo(500000);
         vertice grafo6 = metGrafo.grafo;
         metGrafo.grafo = null;
-         
+
         System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
                 + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
                 + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
@@ -249,6 +249,6 @@ public class Main {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
 
-        menuAlgoritmos();
+        // menuAlgoritmos();
     }
 }
