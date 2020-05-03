@@ -7,11 +7,6 @@ package Main;
 
 import Estructura.*;
 //import Algoritmos.*;
-import java.time.Duration;
-import java.time.Instant;
-import Estructura.Arbol;
-import Estructura.MetodosArboles;
-import Estructura.MetodosGrafo;
 import java.util.Scanner;
 
 /**
@@ -24,13 +19,15 @@ public class Main {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
 
+        int[] tamannio = {1000, 5000, 10000, 100000, 200000, 500000};
+        
         metArbol.llenarArbol(1000);
         Arbol raiz1 = metArbol.raiz;
         metArbol.llenarArbol(5000);
         Arbol raiz2 = metArbol.raiz;
         metArbol.llenarArbol(10000);
         Arbol raiz3 = metArbol.raiz;
-        // metArbol.llenarArbol(100000);
+        // metArbol.llenarArbol(100000); // java.lang.StackOverflowError
         Arbol raiz4 = metArbol.raiz;
         //metArbol.llenarArbol(200000);
         Arbol raiz5 = metArbol.raiz;
@@ -39,17 +36,24 @@ public class Main {
 
         metGrafo.llenarGrafo(1000);
         vertice grafo1 = metGrafo.grafo;
-        metGrafo.llenarGrafo(5000);
+        metGrafo.grafo = null;
+        /*
+        metGrafo.llenarGrafo(5000); //OutOfMemoryError
         vertice grafo2 = metGrafo.grafo;
+        metGrafo.grafo = null;
         metGrafo.llenarGrafo(10000);
         vertice grafo3 = metGrafo.grafo;
+        metGrafo.grafo = null;
         metGrafo.llenarGrafo(100000);
         vertice grafo4 = metGrafo.grafo;
+        metGrafo.grafo = null;
         metGrafo.llenarGrafo(200000);
         vertice grafo5 = metGrafo.grafo;
+        metGrafo.grafo = null;
         metGrafo.llenarGrafo(500000);
         vertice grafo6 = metGrafo.grafo;
-        
+        metGrafo.grafo = null;
+        */
         System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
                 + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
                 + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
@@ -182,20 +186,18 @@ public class Main {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
 
-        //metArbol.imprimirOrden(metArbol.raiz);
-        metArbol.llenarArbol(100);
-
-        //metArbol.imprimirOrden(metArbol.raiz);
-
-        //metGrafo.llenarGrafo(5000);
-        //vertice grafo3 = metGrafo.grafo;
+        /*
+        metGrafo.llenarGrafo(1000);
+        vertice grafo1 = metGrafo.grafo;
+        metGrafo.grafo = null;
+        System.out.println("Grafo 1 creado");
         
-        metGrafo.grafoFuertementeConexo(grafo3);
+        metGrafo.datosProfundidad(grafo1);
+        metGrafo.datosAmplitud(grafo1);
+        */
+        
+        metGrafo.llenarGrafo(5000);
         
         //menuAlgoritmos(); 
-        //metArbol.imprimirOrden(metArbol.raiz);
-
-        // metArbol.llenarArbol(100);
-        // metArbol.imprimirOrden(metArbol.raiz);
     }
 }
