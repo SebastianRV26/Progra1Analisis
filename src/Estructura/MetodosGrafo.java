@@ -7,6 +7,7 @@ package Estructura;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Random;
 import javax.swing.DefaultListModel;
 
 /**
@@ -30,6 +31,7 @@ public class MetodosGrafo {
     public int asignaciones = 0;
     public int comparaciones = 0;
     public int lineas = 0;
+    public boolean  global;
 
     public String insertarVertices(int ID) { // método que inserta un vértice para el grafo
         vertice nuevo = new vertice(ID, false);
@@ -71,7 +73,7 @@ public class MetodosGrafo {
 
     public arco buscar(vertice origen, vertice destino) { // método que busca un arco del grafo
         if (origen.sigA != null) {
-            arco aux = origen.sigA;
+                arco aux = origen.sigA;
             while (aux != null) {
                 if (aux.destino == destino) {
                     return aux;
@@ -132,13 +134,36 @@ public class MetodosGrafo {
     }
 
     public void llenarGrafo(int n) { // método que llena el grafo fuertemente conexo
+        vertice origen, destino;
         for (int i = 0; i <= n; i++) { // primero se insertan los vertices
             insertarVertices(i);
         }
-        for (int i = 0; i <= n; i++) { // liego se insertan los arcos
+        for (int i = 0; i <= n; i++) { // luego se insertan los arcos
             for (int j = 0; j < n; j++) { // para que el grafo sea fuertemente conexo 
-                insertarArco(buscar(i), buscar(j), 1); // INCLUIR PESO RANDOM, preguntar su tamaño
+                Random random = new Random();
+                origen = buscar(i);
+                destino = buscar(j);
+                HayRuta(origen, destino);
+             
+                if (!global) {
+                    insertarArco(origen, destino, random.nextInt()); // INCLUIR PESO RANDOM, preguntar su tamaño
+                }
             }
+        }
+    }
+    public void HayRuta(vertice origen, vertice destino) {
+        if ((origen == null) || (origen.marca)) {
+            return;
+        }
+        origen.marca = true;
+        arco aux = origen.sigA;
+        arco auxDes = destino.sigA;
+        while (aux != null) {
+            if ((aux.destino == destino) && (auxDes.destino == origen)) {
+                global = true;
+            }
+            HayRuta(aux.destino, destino);
+            aux = aux.sigA;
         }
     }
 

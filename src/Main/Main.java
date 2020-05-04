@@ -21,39 +21,40 @@ public class Main {
 
         int[] tamannio = {1000, 5000, 10000, 100000, 200000, 500000}; // array con los tamaños para los árboles y grafos
 
-        metArbol.llenarArbol(1000);
-        //metArbol.llenarArbol(1000);
+        metArbol.llenarArbol(tamannio[0]);
         Arbol raiz1 = metArbol.raiz;
-        ////   metArbol.llenarArbol(5000);
+        ////   metArbol.llenarArbol(tamannio[1]);
         Arbol raiz2 = metArbol.raiz;
-        //   metArbol.llenarArbol(10000);
+         metArbol.llenarArbol(tamannio[2]);
         Arbol raiz3 = metArbol.raiz;
-        // metArbol.llenarArbol(100000); // java.lang.StackOverflowError
+        // metArbol.llenarArbol(tamannio[3]); // java.lang.StackOverflowError
         Arbol raiz4 = metArbol.raiz;
-        //metArbol.llenarArbol(200000);
+        //metArbol.llenarArbol(tamannio[4]);
         Arbol raiz5 = metArbol.raiz;
-        // metArbol.llenarArbol(500000);
+        // metArbol.llenarArbol(tamannio[5]);
         Arbol raiz6 = metArbol.raiz;
 
-        //    metGrafo.llenarGrafo(1000);
+       // metGrafo.llenarGrafo(tamannio[0]);
         vertice grafo1 = metGrafo.grafo;
-        metGrafo.grafo = null;
 
-        //metGrafo.llenarGrafo(5000); //OutOfMemoryError
+        //System.out.println(grafo1.marca);
+       // metGrafo.grafo = null;
+        //metGrafo.llenarGrafo(tamannio[1]); //OutOfMemoryError
         vertice grafo2 = metGrafo.grafo;
-        metGrafo.grafo = null;
-        //metGrafo.llenarGrafo(10000);
+       // metGrafo.grafo = null;
+        //metGrafo.llenarGrafo(tamannio[2]);
         vertice grafo3 = metGrafo.grafo;
-        metGrafo.grafo = null;
-        //metGrafo.llenarGrafo(100000);
+        //metGrafo.grafo = null;
+        //metGrafo.llenarGrafo(tamannio[3]);
         vertice grafo4 = metGrafo.grafo;
-        metGrafo.grafo = null;
-        //metGrafo.llenarGrafo(200000);
+       // metGrafo.grafo = null;
+        //metGrafo.llenarGrafo(tamannio[4]);
         vertice grafo5 = metGrafo.grafo;
-        metGrafo.grafo = null;
-        //metGrafo.llenarGrafo(500000);
+      //  metGrafo.grafo = null;
+        metGrafo.llenarGrafo(tamannio[5]);
         vertice grafo6 = metGrafo.grafo;
-        metGrafo.grafo = null;
+          metGrafo.quitarMarca(grafo6 );
+     //   metGrafo.grafo = null;
 
         System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
                 + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
@@ -246,9 +247,6 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        MetodosArboles metArbol = MetodosArboles.getInstance();
-        MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-
-        // menuAlgoritmos();
+         menuAlgoritmos();
     }
 }
