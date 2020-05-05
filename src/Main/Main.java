@@ -34,15 +34,15 @@ public class Main {
         // metArbol.llenarArbol(tamannio[5]);
         Arbol raiz6 = metArbol.raiz;
 
-       // metGrafo.llenarGrafo(tamannio[0]);
+       //metGrafo.llenarGrafo(tamannio[0]);
         vertice grafo1 = metGrafo.grafo;
 
         //System.out.println(grafo1.marca);
-       // metGrafo.grafo = null;
+        metGrafo.grafo = null;
         //metGrafo.llenarGrafo(tamannio[1]); //OutOfMemoryError
         vertice grafo2 = metGrafo.grafo;
        // metGrafo.grafo = null;
-        //metGrafo.llenarGrafo(tamannio[2]);
+        metGrafo.llenarGrafo(tamannio[2]);
         vertice grafo3 = metGrafo.grafo;
         //metGrafo.grafo = null;
         //metGrafo.llenarGrafo(tamannio[3]);
@@ -51,9 +51,9 @@ public class Main {
         //metGrafo.llenarGrafo(tamannio[4]);
         vertice grafo5 = metGrafo.grafo;
       //  metGrafo.grafo = null;
-        metGrafo.llenarGrafo(tamannio[5]);
-        vertice grafo6 = metGrafo.grafo;
-          metGrafo.quitarMarca(grafo6 );
+     //  metGrafo.llenarGrafo(tamannio[5]);
+       vertice grafo6 = metGrafo.grafo;
+         metGrafo.quitarMarca(grafo3 );
      //   metGrafo.grafo = null;
 
         System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "

@@ -139,18 +139,18 @@ public class MetodosGrafo {
             insertarVertices(i);
         }
         for (int i = 0; i <= n; i++) { // luego se insertan los arcos
+            origen = buscar(i);
             for (int j = 0; j < n; j++) { // para que el grafo sea fuertemente conexo 
                 Random random = new Random();
-                origen = buscar(i);
                 destino = buscar(j);
                 HayRuta(origen, destino);
-             
                 if (!global) {
                     insertarArco(origen, destino, random.nextInt()); // INCLUIR PESO RANDOM, preguntar su tamaño
                 }
             }
         }
     }
+
     public void HayRuta(vertice origen, vertice destino) {
         if ((origen == null) || (origen.marca)) {
             return;
