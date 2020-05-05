@@ -26,11 +26,11 @@ public class Main {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
 
-        //metArbol.llenarArbol(1000);
+        metArbol.llenarArbol(1000);
         Arbol raiz1 = metArbol.raiz;
-     ////   metArbol.llenarArbol(5000);
+      metArbol.llenarArbol(5000);
         Arbol raiz2 = metArbol.raiz;
-     //   metArbol.llenarArbol(10000);
+      metArbol.llenarArbol(10000);
         Arbol raiz3 = metArbol.raiz;
         // metArbol.llenarArbol(100000);
         Arbol raiz4 = metArbol.raiz;
@@ -39,9 +39,9 @@ public class Main {
         // metArbol.llenarArbol(500000);
         Arbol raiz6 = metArbol.raiz;
 
-    //    metGrafo.llenarGrafo(1000);
+      metGrafo.llenarGrafo(1000);
         vertice grafo1 = metGrafo.grafo;
-       //metGrafo.llenarGrafo(5000);
+     //   metGrafo.llenarGrafo(5000);
         vertice grafo2 = metGrafo.grafo;
        metGrafo.llenarGrafo(10000);
         vertice grafo3 = metGrafo.grafo;
