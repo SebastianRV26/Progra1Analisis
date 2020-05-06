@@ -41,99 +41,61 @@ public class Main {
 
     public static void menuAlgoritmos() {
         MetodosArboles metArbol = MetodosArboles.getInstance();
-        int[] tamannioArbol = {1000, 5000, 10000, 20000, 40000, 50000}; // array con los tamaños para los árboles  
-        int[] tamannioGrafo = {100, 500, 1000, 2000, 4000, 5000}; // array con los tamaños para los grafos
-        
-        Arbol[] arboles = crearArboles(tamannioArbol);
-        vertice[] grafos = crearGrafos(tamannioGrafo);
-
-        //////////////////////////////////////////
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-<<<<<<< HEAD
         
-        
-        metGrafo.llenarGrafo(tamannio[0]);
-        vertice grafo1 = metGrafo.grafo;
-        System.out.println(grafo1.marca);
-        metGrafo.grafo = null;
-        
-      ////  metGrafo.llenarGrafo(tamannio[1]); //OutOfMemoryError
-        vertice grafo2 = metGrafo.grafo;
-//        System.out.println(grafo2.marca);
-        metGrafo.grafo = null;
-      /// metGrafo.llenarGrafo(tamannio[2]);
-        vertice grafo3 = metGrafo.grafo;
-  //      System.out.println(grafo3.marca);
-        metGrafo.grafo = null;
-    //    metGrafo.llenarGrafo(tamannio[3]);
-        vertice grafo4 = metGrafo.grafo;
-    ///     System.out.println(grafo4.marca);
-        metGrafo.grafo = null;
-    ///   metGrafo.llenarGrafo(tamannio[4]);
-        vertice grafo5 = metGrafo.grafo;
-       // System.out.println(grafo4.marca);
-        metGrafo.grafo = null;
-       // metGrafo.llenarGrafo(tamannio[5]);
-        vertice grafo6 = metGrafo.grafo;
-         ///System.out.println(grafo6.marca);
-     ///   metGrafo.quitarMarca(grafo3);
-        metGrafo.grafo = null;
-        
-        
-        
-=======
+        int[] tamannioArbol = {1000, 5000, 10000, 20000, 40000, 50000}; // array con los tamaños para los árboles  
+        int[] tamannioGrafo = {10, 50, 100, 200, 400, 500}; // array con los tamaños para los grafos
 
->>>>>>> 972be28192d7589b0f8903ed11ecd8437580e0a5
-        System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
-                + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
-                + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
-                + "\n 3-Algoritmo de recorrido en profundidad Grafo"
-                + "\n 4-Algoritmo de recorrido en anchura Grafo"
-                + "\n ====================================");
+        Arbol[] arboles = crearArboles(tamannioArbol); // array con las raices de los árboles
+        vertice[] grafos = crearGrafos(tamannioGrafo); // array con los vértices de los grafos
 
-        Scanner scanObj = new Scanner(System.in);  // Create a Scanner object
-        String opcion = scanObj.nextLine();  // Read user input
+        while (true) {
+            System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
+                    + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
+                    + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
+                    + "\n 3-Algoritmo de recorrido en profundidad Grafo"
+                    + "\n 4-Algoritmo de recorrido en anchura Grafo"
+                    + "\n 5-Salir"
+                    + "\n ====================================");
 
-        if (opcion.equals("1")) {
-
-            System.out.println("Cantidad de asignaciones, comparaciones, "
-                    + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de profundidad"
-                    + "1000, 5000, 10000,20000,40000, 50000");
-            for (int i = 0; i < tamannioArbol.length; i++) {
-                System.out.println(i + 1 + "-Arbol con tamaño " + tamannioArbol[i]);
-                metArbol.datosProfundidad(arboles[i]);
+            Scanner scanObj = new Scanner(System.in);  // Create a Scanner object
+            String opcion = scanObj.nextLine();  // Read user input
+            switch (opcion) {
+                case "1":
+                    System.out.println("Cantidad de asignaciones, comparaciones, "
+                            + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de profundidad"
+                            + "1000, 5000, 10000,20000,40000, 50000");
+                    for (int i = 0; i < tamannioArbol.length; i++) {
+                        System.out.println(i + 1 + "-Arbol con tamaño " + tamannioArbol[i]);
+                        metArbol.datosProfundidad(arboles[i]);
+                    }   break;
+                case "2":
+                    System.out.println("Cantidad de asignaciones, comparaciones, "
+                            + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
+                    for (int i = 0; i < tamannioArbol.length; i++) {
+                        System.out.println(i + 1 + "-Arbol con tamaño " + tamannioArbol[i]);
+                        metArbol.datosAmplitud(arboles[i]);
+                    }   break;
+                case "3":
+                    System.out.println("Cantidad de asignaciones, comparaciones, "
+                            + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
+                    for (int i = 0; i < tamannioGrafo.length; i++) {
+                        System.out.println(i + 1 + "-Grafo con tamaño " + tamannioGrafo[i]);
+                        metGrafo.datosProfundidad(grafos[i]);
+                    }   break;
+                case "4":
+                    System.out.println("Cantidad de asignaciones, comparaciones, "
+                            + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
+                    for (int i = 0; i < tamannioGrafo.length; i++) {
+                        System.out.println(i + 1 + "-Grafo con tamaño " + tamannioGrafo[i]);
+                        metGrafo.datosAmplitud(grafos[i]);
+                    }   break;
+                case "5":
+                    System.exit(0);
+                default:
+                    break;
             }
         }
-        if (opcion.equals("2")) {
-            System.out.println("Cantidad de asignaciones, comparaciones, "
-                    + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
-
-            for (int i = 0; i < tamannioArbol.length; i++) {
-                System.out.println(i + 1 + "-Arbol con tamaño " + tamannioArbol[i]);
-                metArbol.datosAmplitud(arboles[i]);
-            }
-        }
-        if (opcion.equals("3")) {
-            System.out.println("Cantidad de asignaciones, comparaciones, "
-                    + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
-
-            for (int i = 0; i < tamannioGrafo.length; i++) {
-                System.out.println(i + 1 + "-Grafo con tamaño " + tamannioGrafo[i]);
-                metGrafo.datosProfundidad(grafos[i]);
-            }
-
-        }
-        if (opcion.equals("4")) {
-            System.out.println("Cantidad de asignaciones, comparaciones, "
-                    + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
-
-            for (int i = 0; i < tamannioGrafo.length; i++) {
-                System.out.println(i + 1 + "-Grafo con tamaño " + tamannioGrafo[i]);
-                metGrafo.datosAmplitud(grafos[i]);
-            }
-
-        }
-
     }
 
     /**
