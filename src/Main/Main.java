@@ -41,14 +41,64 @@ public class Main {
 
     public static void menuAlgoritmos() {
         MetodosArboles metArbol = MetodosArboles.getInstance();
-        MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-
-        int[] tamannio = {1000, 5000, 10000, 100000, 200000, 500000}; // array con los tamaños para los árboles y grafos
+        int[] tamannio = {1000, 5000, 10000, 20000, 40000, 50000}; // array con los tamaños para los árboles y grafos, 
 
         Arbol[] arboles = crearArboles(tamannio);
         vertice[] grafos = crearGrafos(tamannio);
-        
-        // aquí sigue el menú de escoger el algoritmo
+
+        //////////////////////////////////////////
+        MetodosGrafo metGrafo = MetodosGrafo.getInstance();
+
+        System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
+                + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
+                + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
+                + "\n 3-Algoritmo de recorrido en profundidad Grafo"
+                + "\n 4-Algoritmo de recorrido en anchura Grafo"
+                + "\n ====================================");
+
+        Scanner scanObj = new Scanner(System.in);  // Create a Scanner object
+        String opcion = scanObj.nextLine();  // Read user input
+
+        if (opcion.equals("1")) {
+
+            System.out.println("Cantidad de asignaciones, comparaciones, "
+                    + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de profundidad"
+                    + "1000, 5000, 10000,20000,40000, 50000");
+            for (int i = 0; i < tamannio.length; i++) {
+                System.out.println(i + 1 + "-Arbol con tamaño " + tamannio[i]);
+                metArbol.datosProfundidad(arboles[i]);
+            }
+        }
+        if (opcion.equals("2")) {
+            System.out.println("Cantidad de asignaciones, comparaciones, "
+                    + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
+
+            for (int i = 0; i < tamannio.length; i++) {
+                System.out.println(i + 1 + "-Arbol con tamaño " + tamannio[i]);
+                metArbol.datosAmplitud(arboles[i]);
+            }
+        }
+        if (opcion.equals("3")) {
+            System.out.println("Cantidad de asignaciones, comparaciones, "
+                    + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
+
+            for (int i = 0; i < tamannio.length; i++) {
+                System.out.println(i + 1 + "-Grafo con tamaño " + tamannio[i]);
+                metGrafo.datosProfundidad(grafos[i]);
+            }
+
+        }
+        if (opcion.equals("4")) {
+            System.out.println("Cantidad de asignaciones, comparaciones, "
+                    + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
+
+            for (int i = 0; i < tamannio.length; i++) {
+                System.out.println(i + 1 + "-Grafo con tamaño " + tamannio[i]);
+                metGrafo.datosAmplitud(grafos[i]);
+            }
+
+        }
+
     }
 
     /**
@@ -56,9 +106,22 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        /*
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-
+        
+        metArbol.llenarArbol(1000);
+        Arbol raiz1 = metArbol.raiz;
+        metArbol.imprimirPreOrden(raiz1);
+        System.out.println("1-Arbol con tamaño 1000");
+        metArbol.datosProfundidad(raiz1);
+        
+        System.out.println("1-Grafo con tamaño ");
+        metGrafo.llenarGrafo(5000);
+        vertice grafo1 = metGrafo.grafo;
+        metGrafo.datosProfundidad(grafo1);
+        metGrafo.datosAmplitud(grafo1);
+         */
         menuAlgoritmos();
     }
 }
