@@ -49,41 +49,7 @@ public class Main {
 
         //////////////////////////////////////////
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-<<<<<<< HEAD
-        
-        
-        metGrafo.llenarGrafo(tamannio[0]);
-        vertice grafo1 = metGrafo.grafo;
-        System.out.println(grafo1.marca);
-        metGrafo.grafo = null;
-        
-      ////  metGrafo.llenarGrafo(tamannio[1]); //OutOfMemoryError
-        vertice grafo2 = metGrafo.grafo;
-//        System.out.println(grafo2.marca);
-        metGrafo.grafo = null;
-      /// metGrafo.llenarGrafo(tamannio[2]);
-        vertice grafo3 = metGrafo.grafo;
-  //      System.out.println(grafo3.marca);
-        metGrafo.grafo = null;
-    //    metGrafo.llenarGrafo(tamannio[3]);
-        vertice grafo4 = metGrafo.grafo;
-    ///     System.out.println(grafo4.marca);
-        metGrafo.grafo = null;
-    ///   metGrafo.llenarGrafo(tamannio[4]);
-        vertice grafo5 = metGrafo.grafo;
-       // System.out.println(grafo4.marca);
-        metGrafo.grafo = null;
-       // metGrafo.llenarGrafo(tamannio[5]);
-        vertice grafo6 = metGrafo.grafo;
-         ///System.out.println(grafo6.marca);
-     ///   metGrafo.quitarMarca(grafo3);
-        metGrafo.grafo = null;
-        
-        
-        
-=======
 
->>>>>>> 972be28192d7589b0f8903ed11ecd8437580e0a5
         System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
                 + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
                 + "\n 2-Algoritmo de recorrido en anchura Arbol binario "
