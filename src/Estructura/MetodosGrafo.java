@@ -8,7 +8,6 @@ package Estructura;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Random;
-import javax.swing.DefaultListModel;
 
 /**
  *
@@ -25,13 +24,11 @@ public class MetodosGrafo {
         return instance;
     }
 
-    DefaultListModel<String> listModel = new DefaultListModel<>(); // ELIMINA
-
     public vertice grafo;
     public int asignaciones = 0;
     public int comparaciones = 0;
     public int lineas = 0;
-    public boolean  global;
+    public boolean global;
 
     public String insertarVertices(int ID) { // método que inserta un vértice para el grafo
         vertice nuevo = new vertice(ID, false);
@@ -73,7 +70,7 @@ public class MetodosGrafo {
 
     public arco buscar(vertice origen, vertice destino) { // método que busca un arco del grafo
         if (origen.sigA != null) {
-                arco aux = origen.sigA;
+            arco aux = origen.sigA;
             while (aux != null) {
                 if (aux.destino == destino) {
                     return aux;
@@ -145,7 +142,7 @@ public class MetodosGrafo {
                 destino = buscar(j);
                 HayRuta(origen, destino);
                 if (!global) {
-                    insertarArco(origen, destino, random.nextInt()); // INCLUIR PESO RANDOM, preguntar su tamaño
+                    insertarArco(origen, destino, random.nextInt());
                 }
             }
         }

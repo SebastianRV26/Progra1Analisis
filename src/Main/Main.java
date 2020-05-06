@@ -23,9 +23,9 @@ public class Main {
 
         metArbol.llenarArbol(tamannio[0]);
         Arbol raiz1 = metArbol.raiz;
-        ////   metArbol.llenarArbol(tamannio[1]);
+        // metArbol.llenarArbol(tamannio[1]);
         Arbol raiz2 = metArbol.raiz;
-         metArbol.llenarArbol(tamannio[2]);
+        metArbol.llenarArbol(tamannio[2]);
         Arbol raiz3 = metArbol.raiz;
         // metArbol.llenarArbol(tamannio[3]); // java.lang.StackOverflowError
         Arbol raiz4 = metArbol.raiz;
@@ -34,27 +34,27 @@ public class Main {
         // metArbol.llenarArbol(tamannio[5]);
         Arbol raiz6 = metArbol.raiz;
 
-       //metGrafo.llenarGrafo(tamannio[0]);
+        //metGrafo.llenarGrafo(tamannio[0]);
         vertice grafo1 = metGrafo.grafo;
 
         //System.out.println(grafo1.marca);
         metGrafo.grafo = null;
         //metGrafo.llenarGrafo(tamannio[1]); //OutOfMemoryError
         vertice grafo2 = metGrafo.grafo;
-       // metGrafo.grafo = null;
+        // metGrafo.grafo = null;
         metGrafo.llenarGrafo(tamannio[2]);
         vertice grafo3 = metGrafo.grafo;
         //metGrafo.grafo = null;
         //metGrafo.llenarGrafo(tamannio[3]);
         vertice grafo4 = metGrafo.grafo;
-       // metGrafo.grafo = null;
+        // metGrafo.grafo = null;
         //metGrafo.llenarGrafo(tamannio[4]);
         vertice grafo5 = metGrafo.grafo;
-      //  metGrafo.grafo = null;
-     //  metGrafo.llenarGrafo(tamannio[5]);
-       vertice grafo6 = metGrafo.grafo;
-         metGrafo.quitarMarca(grafo3 );
-     //   metGrafo.grafo = null;
+        //  metGrafo.grafo = null;
+        //  metGrafo.llenarGrafo(tamannio[5]);
+        vertice grafo6 = metGrafo.grafo;
+        metGrafo.quitarMarca(grafo3);
+        //   metGrafo.grafo = null;
 
         System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "
                 + "\n 1-Algoritmo de recorrido en profundidad Arbol binario "
@@ -247,6 +247,6 @@ public class Main {
      */
     public static void main(String[] args) {
 
-         menuAlgoritmos();
+        menuAlgoritmos();
     }
 }
