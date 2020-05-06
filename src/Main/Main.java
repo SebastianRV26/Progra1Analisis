@@ -41,10 +41,11 @@ public class Main {
 
     public static void menuAlgoritmos() {
         MetodosArboles metArbol = MetodosArboles.getInstance();
-        int[] tamannio = {1000, 5000, 10000, 20000, 40000, 50000}; // array con los tamaños para los árboles y grafos, 
-
-        Arbol[] arboles = crearArboles(tamannio);
-        vertice[] grafos = crearGrafos(tamannio);
+        int[] tamannioArbol = {1000, 5000, 10000, 20000, 40000, 50000}; // array con los tamaños para los árboles  
+        int[] tamannioGrafo = {100, 500, 1000, 2000, 4000, 5000}; // array con los tamaños para los grafos
+        
+        Arbol[] arboles = crearArboles(tamannioArbol);
+        vertice[] grafos = crearGrafos(tamannioGrafo);
 
         //////////////////////////////////////////
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
@@ -64,8 +65,8 @@ public class Main {
             System.out.println("Cantidad de asignaciones, comparaciones, "
                     + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de profundidad"
                     + "1000, 5000, 10000,20000,40000, 50000");
-            for (int i = 0; i < tamannio.length; i++) {
-                System.out.println(i + 1 + "-Arbol con tamaño " + tamannio[i]);
+            for (int i = 0; i < tamannioArbol.length; i++) {
+                System.out.println(i + 1 + "-Arbol con tamaño " + tamannioArbol[i]);
                 metArbol.datosProfundidad(arboles[i]);
             }
         }
@@ -73,8 +74,8 @@ public class Main {
             System.out.println("Cantidad de asignaciones, comparaciones, "
                     + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
 
-            for (int i = 0; i < tamannio.length; i++) {
-                System.out.println(i + 1 + "-Arbol con tamaño " + tamannio[i]);
+            for (int i = 0; i < tamannioArbol.length; i++) {
+                System.out.println(i + 1 + "-Arbol con tamaño " + tamannioArbol[i]);
                 metArbol.datosAmplitud(arboles[i]);
             }
         }
@@ -82,8 +83,8 @@ public class Main {
             System.out.println("Cantidad de asignaciones, comparaciones, "
                     + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
 
-            for (int i = 0; i < tamannio.length; i++) {
-                System.out.println(i + 1 + "-Grafo con tamaño " + tamannio[i]);
+            for (int i = 0; i < tamannioGrafo.length; i++) {
+                System.out.println(i + 1 + "-Grafo con tamaño " + tamannioGrafo[i]);
                 metGrafo.datosProfundidad(grafos[i]);
             }
 
@@ -92,8 +93,8 @@ public class Main {
             System.out.println("Cantidad de asignaciones, comparaciones, "
                     + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
 
-            for (int i = 0; i < tamannio.length; i++) {
-                System.out.println(i + 1 + "-Grafo con tamaño " + tamannio[i]);
+            for (int i = 0; i < tamannioGrafo.length; i++) {
+                System.out.println(i + 1 + "-Grafo con tamaño " + tamannioGrafo[i]);
                 metGrafo.datosAmplitud(grafos[i]);
             }
 
