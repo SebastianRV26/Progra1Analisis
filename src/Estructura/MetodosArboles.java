@@ -98,7 +98,6 @@ public class MetodosArboles {
             return;
         }
         imprimirOrden(aux.izq);
-        System.out.println(aux.id);
         imprimirOrden(aux.der);
     }
 
@@ -141,7 +140,7 @@ public class MetodosArboles {
                     cola.Insertar(aux.der);
                 }
             }
-            colaAux.imprimirCola();
+
 
             int totalAsigCola = cola.asignacionesCola + colaAux.asignacionesCola;
             asignaciones += totalAsigCola;

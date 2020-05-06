@@ -84,21 +84,26 @@ public class Main {
         System.out.println(grafo1.marca);
         metGrafo.grafo = null;
         
-        metGrafo.llenarGrafo(tamannio[1]); //OutOfMemoryError
+      ////  metGrafo.llenarGrafo(tamannio[1]); //OutOfMemoryError
         vertice grafo2 = metGrafo.grafo;
+//        System.out.println(grafo2.marca);
         metGrafo.grafo = null;
-        metGrafo.llenarGrafo(tamannio[2]);
+      /// metGrafo.llenarGrafo(tamannio[2]);
         vertice grafo3 = metGrafo.grafo;
+  //      System.out.println(grafo3.marca);
         metGrafo.grafo = null;
-        metGrafo.llenarGrafo(tamannio[3]);
+    //    metGrafo.llenarGrafo(tamannio[3]);
         vertice grafo4 = metGrafo.grafo;
+    ///     System.out.println(grafo4.marca);
         metGrafo.grafo = null;
-        metGrafo.llenarGrafo(tamannio[4]);
+    ///   metGrafo.llenarGrafo(tamannio[4]);
         vertice grafo5 = metGrafo.grafo;
+       // System.out.println(grafo4.marca);
         metGrafo.grafo = null;
-        metGrafo.llenarGrafo(tamannio[5]);
+       // metGrafo.llenarGrafo(tamannio[5]);
         vertice grafo6 = metGrafo.grafo;
-        metGrafo.quitarMarca(grafo3);
+         ///System.out.println(grafo6.marca);
+     ///   metGrafo.quitarMarca(grafo3);
         metGrafo.grafo = null;
         
         
