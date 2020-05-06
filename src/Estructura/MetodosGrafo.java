@@ -7,7 +7,7 @@ package Estructura;
 
 import java.time.Duration;
 import java.time.Instant;
-import javax.swing.DefaultListModel;
+import java.util.Random;
 
 /**
  *
@@ -24,12 +24,11 @@ public class MetodosGrafo {
         return instance;
     }
 
-    DefaultListModel<String> listModel = new DefaultListModel<>(); // ELIMINA
-
     public vertice grafo;
     public int asignaciones = 0;
     public int comparaciones = 0;
     public int lineas = 0;
+    public boolean global;
 
     public String insertarVertices(int ID) { // método que inserta un vértice para el grafo
         vertice nuevo = new vertice(ID, false);
@@ -84,7 +83,7 @@ public class MetodosGrafo {
 
     public void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
     {
-        if ((grafo == null) | (grafo.marca == true)) {
+        if ((grafo == null) || (grafo.marca == true)) {
             comparaciones += 2;
             return;
         } else {
@@ -131,14 +130,37 @@ public class MetodosGrafo {
         }
     }
 
-    public void llenarGrafo(int n) {
+    public void llenarGrafo(int n) { // método que llena el grafo fuertemente conexo
+        vertice origen, destino;
         for (int i = 0; i <= n; i++) { // primero se insertan los vertices
             insertarVertices(i);
         }
-        for (int i = 0; i <= n; i++) { // liego se insertan los arcos
-            for (int j = 0; j < n; j++) {
-                insertarArco(buscar(i), buscar(j), 1);
+        for (int i = 0; i <= n; i++) { // luego se insertan los arcos
+            origen = buscar(i);
+            for (int j = 0; j < n; j++) { // para que el grafo sea fuertemente conexo 
+                Random random = new Random();
+                destino = buscar(j);
+                HayRuta(origen, destino);
+                if (!global) {
+                    insertarArco(origen, destino, random.nextInt());
+                }
             }
+        }
+    }
+
+    public void HayRuta(vertice origen, vertice destino) {
+        if ((origen == null) || (origen.marca)) {
+            return;
+        }
+        origen.marca = true;
+        arco aux = origen.sigA;
+        arco auxDes = destino.sigA;
+        while (aux != null) {
+            if ((aux.destino == destino) && (auxDes.destino == origen)) {
+                global = true;
+            }
+            HayRuta(aux.destino, destino);
+            aux = aux.sigA;
         }
     }
 
@@ -150,7 +172,8 @@ public class MetodosGrafo {
         }
     }
 
-    public void datosProfundidad(vertice grafo) {
+    public void datosProfundidad(vertice grafo) { // método que llama a la profundidad para grafo y muestra sus asignaciones, 
+        //comparaciones, lineas de código ejecutadas y su duración
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
@@ -165,7 +188,8 @@ public class MetodosGrafo {
         System.out.println("====================================");
     }
 
-    public void datosAmplitud(vertice grafo) {
+    public void datosAmplitud(vertice grafo) { // método que llama a la amplitud para grafo y muestra sus asignaciones, 
+        //comparaciones, lineas de código ejecutadas y su duración
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
