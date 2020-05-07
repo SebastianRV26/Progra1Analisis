@@ -142,7 +142,7 @@ public class MetodosGrafo {
                 destino = buscar(j);
                 HayRuta(origen, destino);
                 if (!global) {
-                    insertarArco(origen, destino, random.nextInt());
+                    insertarArco(origen, destino, random.nextInt(11)+1);
                 }
             }
         }

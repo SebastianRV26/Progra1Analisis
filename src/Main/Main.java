@@ -6,6 +6,7 @@
 package Main;
 
 import Estructura.*;
+import java.util.Random;
 //import Algoritmos.*;
 import java.util.Scanner;
 
