@@ -82,33 +82,19 @@ public class MetodosArboles {
         }
     }
 
-    public void imprimirPostorden(Arbol aux) {  // método que imprime los nodos: izquierda, derecha y raiz 
-        if (aux == null) { // condicion de parada para la recursividad
-            comparaciones++;
-            return;
-        }
-        imprimirPostorden(aux.izq);
-        imprimirPostorden(aux.der);
-        System.out.println(aux.id);
-    }
-
     public void imprimirOrden(Arbol aux) { // método que imprime los nodos: izquierda, raiz y derecha
         if (aux == null) { // condicion de parada para la recursividad
             comparaciones++;
+            lineas += 2;
             return;
         }
         imprimirOrden(aux.izq);
+        lineas++;
+        asignaciones++;
+        //System.out.println(aux.id);
         imprimirOrden(aux.der);
-    }
-
-    public void imprimirPreOrden(Arbol aux) { // método que imprime los nodos: raiz izquierda y derecha
-        if (aux == null) { // condicion de parada para la recursividad
-            comparaciones++;
-            return;
-        }
-        System.out.println(aux.id);
-        imprimirPreOrden(aux.izq);
-        imprimirPreOrden(aux.der);
+        lineas++;
+        asignaciones++;
     }
 
     public void llenarArbol(int n) { // método que llena el arbol de forma ordenada
@@ -122,26 +108,40 @@ public class MetodosArboles {
     public void amplitud(Arbol value) {//método que imprime el árbol en amplitud
         Arbol aux;
         Cola cola, colaAux;
+        lineas += 2;
         if (value != null) {
-            comparaciones++;
             cola = new Cola();
             colaAux = new Cola();
-            asignaciones += 2;
             cola.Insertar(value);
+            lineas += 4;
+            comparaciones++;
+            asignaciones += 3;
             while (!cola.colaVacia()) {
-                comparaciones++;
                 colaAux.Insertar(aux = cola.Extraer());
+                lineas += 2;
+                comparaciones++;
+                asignaciones += 4;
                 if (aux.izq != null) {
-                    comparaciones++;
                     cola.Insertar(aux.izq);
+                    lineas += 2;
+                    comparaciones++;
+                    asignaciones++;
                 }
                 if (aux.der != null) {
-                    comparaciones++;
                     cola.Insertar(aux.der);
+                    lineas += 2;
+                    comparaciones++;
+                    asignaciones++;
                 }
+                lineas += 2;
             }
+            // colaAux.imprimirCola();
+            lineas += 2;
+            comparaciones++;
+            asignaciones++;
 
-
+            int totalLineasCola = cola.lineasCola + colaAux.lineasCola;
+            lineas += totalLineasCola;
             int totalAsigCola = cola.asignacionesCola + colaAux.asignacionesCola;
             asignaciones += totalAsigCola;
             int totalComCola = cola.comparacionesCola + colaAux.comparacionesCola;
@@ -152,14 +152,16 @@ public class MetodosArboles {
     public void datosProfundidad(Arbol raiz) {
         asignaciones = 0;
         comparaciones = 0;
-        lineas = 0;
-        Instant starts = Instant.now();
+        lineas = 0;       
+        long starts, ends;
+        starts = System.currentTimeMillis();
         imprimirOrden(raiz);
-        Instant ends = Instant.now();
+        ends = System.currentTimeMillis();
+        long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
-        System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
+        System.out.println("Tiempo de ejecucion: " + totalTime + " ms");
         System.out.println("====================================");
     }
 
@@ -167,13 +169,15 @@ public class MetodosArboles {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
-        Instant starts = Instant.now();
+        long starts, ends;
+        starts = System.currentTimeMillis();
         amplitud(raiz);
-        Instant ends = Instant.now();
+        ends = System.currentTimeMillis();
+        long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
-        System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
+        System.out.println("Tiempo de ejecucion: " + totalTime + " ms");
         System.out.println("====================================");
     }
 }

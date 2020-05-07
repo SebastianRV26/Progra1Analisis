@@ -83,49 +83,63 @@ public class MetodosGrafo {
 
     public void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
     {
-        if ((grafo == null) || (grafo.marca == true)) {
-            comparaciones += 2;
-            return;
-        } else {
+        if ((grafo != null) && (grafo.marca == false)) {
             grafo.marca = true;
             arco aux = grafo.sigA;
+            lineas += 3;
+            comparaciones += 2;
             asignaciones += 2;
             while (aux != null) {
-                comparaciones++;
                 // System.out.println("Origen: " + grafo.ID);
                 // System.out.println("Peso: " + aux.peso);
                 // System.out.println("Destino: " + aux.destino.ID);
                 // System.out.println("-----------");
                 profundidad(aux.destino);
                 aux = aux.sigA;
-                asignaciones++;
+                lineas += 2;
+                comparaciones++;
+                asignaciones += 2;
             }
+            lineas++;
             comparaciones++;
+        } else {
+            lineas++;
+            comparaciones++;
+            return;
         }
     }
+
 
     public void amplitud(vertice grafo) // metodo para imprimir el inicio en amplitud
     {
         if (grafo == null) {
             comparaciones++;
-            System.out.println("No hay grafo");
+            lineas++;
+            //System.out.println("No hay grafo");
         } else {
             vertice temp = grafo;
+            asignaciones++;
+            lineas++;
             while (temp != null) {
-                comparaciones++;
                 // System.out.println("Vertice: " + temp.ID);
                 arco aux = temp.sigA;
+                lineas += 2;
+                comparaciones++;
                 asignaciones++;
                 while (aux != null) {
                     // System.out.println("Destino: " + aux.destino.ID);
                     aux = aux.sigA;
+                    lineas += 2;
+                    comparaciones++;
                     asignaciones++;
                 }
-                comparaciones++;
                 // System.out.println("-----------");
                 temp = temp.sigV;
+                lineas+=2;
+                comparaciones++;
                 asignaciones++;
             }
+            lineas++;
             comparaciones++;
         }
     }
@@ -140,30 +154,14 @@ public class MetodosGrafo {
             for (int j = 0; j < n; j++) { // para que el grafo sea fuertemente conexo 
                 Random random = new Random();
                 destino = buscar(j);
-                HayRuta(origen, destino);
-                if (!global) {
-                    insertarArco(origen, destino, random.nextInt(11)+1);
+                if (destino.ID != origen.ID) {
+                    insertarArco(origen, destino, random.nextInt(11) + 1);
                 }
             }
         }
         quitarMarca(grafo);
     }
 
-    public void HayRuta(vertice origen, vertice destino) {
-        if ((origen == null) || (origen.marca)) {
-            return;
-        }
-        origen.marca = true;
-        arco aux = origen.sigA;
-        arco auxDes = destino.sigA;
-        while (aux != null) {
-            if ((aux.destino == destino) && (auxDes.destino == origen)) {
-                global = true;
-            }
-            HayRuta(aux.destino, destino);
-            aux = aux.sigA;
-        }
-    }
 
     public void quitarMarca(vertice grafo) {
         vertice aux = grafo;
@@ -178,14 +176,15 @@ public class MetodosGrafo {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
-        Instant starts = Instant.now();
+        long starts, ends;
+        starts = System.currentTimeMillis();
         profundidad(grafo);
-        Instant ends = Instant.now();
-        quitarMarca(grafo); // por si deea volver a llamar a profundidad
+        ends = System.currentTimeMillis();
+        long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
-        System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
+        System.out.println("Tiempo de ejecucion: " + totalTime + " ms" );
         System.out.println("====================================");
     }
 
@@ -194,13 +193,15 @@ public class MetodosGrafo {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
-        Instant starts = Instant.now();
+        long starts, ends;
+        starts = System.currentTimeMillis();
         amplitud(grafo);
-        Instant ends = Instant.now();
+        ends = System.currentTimeMillis();
+        long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
-        System.out.println("Tiempo de ejecucion: " + Duration.between(starts, ends));
+        System.out.println("Tiempo de ejecucion: "  + totalTime + " ms");
         System.out.println("====================================");
     }
 

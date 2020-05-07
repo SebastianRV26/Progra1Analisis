@@ -46,7 +46,7 @@ public class Main {
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
         
         int[] tamannioArbol = {1000, 5000, 10000, 20000, 40000, 50000}; // array con los tamaños para los árboles  
-        int[] tamannioGrafo = {100, 500, 1000, 2000, 4000, 5000}; // array con los tamaños para los grafos
+        int[] tamannioGrafo = {100, 500, 1000, 2000, 4000}; // array con los tamaños para los grafos
 
         Arbol[] arboles = crearArboles(tamannioArbol); // array con las raices de los árboles
         vertice[] grafos = crearGrafos(tamannioGrafo); // array con los vértices de los grafos

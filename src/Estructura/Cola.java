@@ -18,6 +18,7 @@ public class Cola {
     String cola = "";
     public int asignacionesCola = 0;
     public int comparacionesCola = 0;
+    public int lineasCola = 0;
 
     public Cola() {
         this.inicioCola = null;
@@ -28,8 +29,10 @@ public class Cola {
     public boolean colaVacia() {
         if (inicioCola == null) {
             comparacionesCola++;
+            lineasCola++;
             return true;
         } else {
+            lineasCola++;
             return false;
         }
 
@@ -40,34 +43,42 @@ public class Cola {
         nuevo.value = aux;
         nuevo.sig = null;
         asignacionesCola += 3;
+        lineasCola += 3;
         if (colaVacia()) {
-            comparacionesCola++;
             inicioCola = nuevo;
             finalCola = nuevo;
-            asignacionesCola += 2;
+            lineasCola += 3;
+            comparacionesCola++;
+            asignacionesCola += 3;
         } else {
             finalCola.sig = nuevo;
             finalCola = nuevo;
+            lineasCola += 3;
             asignacionesCola += 2;
         }
     }
 
     public Arbol Extraer() {
         if (!colaVacia()) {
-            comparacionesCola++;
             Arbol aux = inicioCola.value;
-            asignacionesCola++;
+            lineasCola+=2;
+            comparacionesCola++;
+            asignacionesCola+=2;
             if (inicioCola == finalCola) {
-                comparacionesCola++;
                 inicioCola = null;
                 finalCola = null;
+                lineasCola += 3;
+                comparacionesCola++;
                 asignacionesCola += 2;
             } else {
                 inicioCola = inicioCola.sig;
+                lineasCola+=2;
                 asignacionesCola++;
             }
+            lineasCola++;
             return aux;
         } else {
+            lineasCola ++;
             return null;
         }
     }
@@ -75,18 +86,26 @@ public class Cola {
     public void imprimirCola() {
         Nodo recorrido = inicioCola;
         ArrayList<Arbol> arbolesList = new ArrayList<>();
+        lineasCola +=2;
         asignacionesCola += 2;
         while (recorrido != null) {
-            comparacionesCola++;
             arbolesList.add(recorrido.value);
             recorrido = recorrido.sig;
-            asignacionesCola++;
+            lineasCola+=3;
+            comparacionesCola++;
+            asignacionesCola+=2;
         }
         Collections.reverse(arbolesList);
+        lineasCola+=2;
+        comparacionesCola++;
+        asignacionesCola++;
         for (int i = 0; i < arbolesList.size(); i++) {
+            lineasCola++;
             comparacionesCola++;
+            asignacionesCola++;
             System.out.println("Arbol con id " + arbolesList.get(i).id);
         }
-
+        lineasCola++;
+        asignacionesCola++;
     }
 }
