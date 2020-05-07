@@ -35,6 +35,7 @@ public class Main {
             vertice grafo = metGrafo.grafo;
             grafos[i] = grafo;
             metGrafo.grafo = null;
+            System.out.println("Creado grafo "+(i+1));
         }
         return grafos;
     }
@@ -44,7 +45,7 @@ public class Main {
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
         
         int[] tamannioArbol = {1000, 5000, 10000, 20000, 40000, 50000}; // array con los tamaños para los árboles  
-        int[] tamannioGrafo = {10, 50, 100, 200, 400, 500}; // array con los tamaños para los grafos
+        int[] tamannioGrafo = {100, 500, 1000, 2000, 4000, 5000}; // array con los tamaños para los grafos
 
         Arbol[] arboles = crearArboles(tamannioArbol); // array con las raices de los árboles
         vertice[] grafos = crearGrafos(tamannioGrafo); // array con los vértices de los grafos
@@ -102,23 +103,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        /*
-        MetodosArboles metArbol = MetodosArboles.getInstance();
-        MetodosGrafo metGrafo = MetodosGrafo.getInstance();
         
-        metArbol.llenarArbol(1000);
-        Arbol raiz1 = metArbol.raiz;
-        metArbol.imprimirPreOrden(raiz1);
-        System.out.println("1-Arbol con tamaño 1000");
-        metArbol.datosProfundidad(raiz1);
-        
-        System.out.println("1-Grafo con tamaño ");
-        metGrafo.llenarGrafo(5000);
-        vertice grafo1 = metGrafo.grafo;
-        metGrafo.datosProfundidad(grafo1);
-        metGrafo.datosAmplitud(grafo1);
-         */
+        MetodosArboles metArbol = MetodosArboles.getInstance(); // para pruebas
+        MetodosGrafo metGrafo = MetodosGrafo.getInstance(); // para pruebas
+                
         menuAlgoritmos();
     }
 }

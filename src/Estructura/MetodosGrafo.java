@@ -146,6 +146,7 @@ public class MetodosGrafo {
                 }
             }
         }
+        quitarMarca(grafo);
     }
 
     public void HayRuta(vertice origen, vertice destino) {
