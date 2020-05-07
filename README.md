@@ -1,11 +1,11 @@
-# PrograAnalisis
+# Progra1Análisis
 
-Acerca de: Proyecto1 del curso análisis de algoritmos.
+Acerca de: Crear árboles y grafos con tamaños extensos; realizar los algoritmos de amplitud y profundidad 
 
 ## Integrantes:
-* [Eduardo Binns](https://github.com/EduardoBinns)
-* [Dilana Sancho](https://github.com/dsvargas)
-* [Sebastián Rojas](https://github.com/SebastianRV26)
+* [Eduardo Binns Sánchez](https://github.com/EduardoBinns)
+* [Dilana Sancho Vargas](https://github.com/dsvargas)
+* [Sebastián Rojas Vargas](https://github.com/SebastianRV26)
 
 Curso: Análisis de algoritmos. 
 I Semestre 2020. 
