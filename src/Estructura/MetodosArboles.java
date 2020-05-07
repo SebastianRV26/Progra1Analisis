@@ -98,7 +98,6 @@ public class MetodosArboles {
             return;
         }
         imprimirOrden(aux.izq);
-        System.out.println("hola");
         imprimirOrden(aux.der);
     }
 
