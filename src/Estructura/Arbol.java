@@ -14,7 +14,12 @@ public class Arbol { // clase árbol para árboles binarios
     int id;
     public Arbol izq, der;
 
-    public Arbol(int id) { // constructor
+    /**
+     * constructor del árbol
+     *
+     * @param id identificador del nodo del árbol
+     */
+    public Arbol(int id) {
         this.id = id;
     }
 }

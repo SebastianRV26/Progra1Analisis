@@ -6,8 +6,6 @@
 package Main;
 
 import Estructura.*;
-import java.util.Random;
-//import Algoritmos.*;
 import java.util.Scanner;
 
 /**
@@ -16,6 +14,13 @@ import java.util.Scanner;
  */
 public class Main {
 
+    /**
+     * método que crea los árboles de distintos tamaños y los almacena en un
+     * arreglo
+     *
+     * @param tamannio tamaños requeridos para crear los árboles
+     * @return un arreglo con las raices de los árboles de distintos tamaños
+     */
     public static Arbol[] crearArboles(int[] tamannio) {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         Arbol[] arboles = new Arbol[6];
@@ -28,6 +33,14 @@ public class Main {
         return arboles;
     }
 
+    /**
+     * método que crea los grafos de distintos tamaños y los almacena en un
+     * arreglo
+     *
+     * @param tamannio tamaños requeridos para crear los grafos
+     * @return un arreglo con el primer vértice de los grafos de distintos
+     * tamaños
+     */
     public static vertice[] crearGrafos(int[] tamannio) {
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
         vertice[] grafos = new vertice[6];
@@ -36,17 +49,20 @@ public class Main {
             vertice grafo = metGrafo.grafo;
             grafos[i] = grafo;
             metGrafo.grafo = null;
-            System.out.println("Creado grafo "+(i+1));
         }
         return grafos;
     }
 
+    /**
+     * método que muestra la posibilidad al usuario de escoger el algoritmo que
+     * desea ver y ejecuta el algoritmo seleccionado
+     */
     public static void menuAlgoritmos() {
         MetodosArboles metArbol = MetodosArboles.getInstance();
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-        
+
         int[] tamannioArbol = {1000, 5000, 10000, 20000, 40000, 50000}; // array con los tamaños para los árboles  
-        int[] tamannioGrafo = {100, 500, 1000, 2000, 4000}; // array con los tamaños para los grafos
+        int[] tamannioGrafo = {100, 500, 1000, 2000, 4000, 5000}; // array con los tamaños para los grafos
 
         Arbol[] arboles = crearArboles(tamannioArbol); // array con las raices de los árboles
         vertice[] grafos = crearGrafos(tamannioGrafo); // array con los vértices de los grafos
@@ -70,28 +86,32 @@ public class Main {
                     for (int i = 0; i < tamannioArbol.length; i++) {
                         System.out.println(i + 1 + "-Arbol con tamaño " + tamannioArbol[i]);
                         metArbol.datosProfundidad(arboles[i]);
-                    }   break;
+                    }
+                    break;
                 case "2":
                     System.out.println("Cantidad de asignaciones, comparaciones, "
                             + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
                     for (int i = 0; i < tamannioArbol.length; i++) {
                         System.out.println(i + 1 + "-Arbol con tamaño " + tamannioArbol[i]);
                         metArbol.datosAmplitud(arboles[i]);
-                    }   break;
+                    }
+                    break;
                 case "3":
                     System.out.println("Cantidad de asignaciones, comparaciones, "
                             + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
                     for (int i = 0; i < tamannioGrafo.length; i++) {
                         System.out.println(i + 1 + "-Grafo con tamaño " + tamannioGrafo[i]);
                         metGrafo.datosProfundidad(grafos[i]);
-                    }   break;
+                    }
+                    break;
                 case "4":
                     System.out.println("Cantidad de asignaciones, comparaciones, "
                             + "lineas ejecutadas y tiempo de ejecucion del algoritmo con recorrido de amplitud");
                     for (int i = 0; i < tamannioGrafo.length; i++) {
                         System.out.println(i + 1 + "-Grafo con tamaño " + tamannioGrafo[i]);
                         metGrafo.datosAmplitud(grafos[i]);
-                    }   break;
+                    }
+                    break;
                 case "5":
                     System.exit(0);
                 default:
@@ -104,11 +124,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        MetodosArboles metArbol = MetodosArboles.getInstance(); // para pruebas
-        MetodosGrafo metGrafo = MetodosGrafo.getInstance(); // para pruebas
-                
+
         menuAlgoritmos();
     }
 }
-

@@ -5,9 +5,6 @@
  */
 package Estructura;
 
-import java.time.Duration;
-import java.time.Instant;
-
 /**
  *
  * @author edubi
@@ -16,7 +13,13 @@ public class MetodosArboles {
 
     public static MetodosArboles instance = null; // instancia de la clase MetodosArboles
 
-    public static MetodosArboles getInstance() { // singleton para que exista únicamente una instacia de la clase
+    /**
+     * singleton para que exista únicamente una instacia de la clase
+     * MetodosArboles
+     *
+     * @return la instancia única del objeto MetodosArboles
+     */
+    public static MetodosArboles getInstance() {
         if (instance == null) {
             instance = new MetodosArboles();
         }
@@ -30,7 +33,14 @@ public class MetodosArboles {
     public int comparaciones = 0;
     public int lineas = 0;
 
-    public String insertarOrdenado(int id, Arbol aux) { // método que inserta un nodo en el arbol de manera ordenada
+    /**
+     * método que inserta un nodo en el arbol de manera ordenada
+     *
+     * @param id identificador del nodo del árbol
+     * @param aux la raíz del árbol
+     * @return "insertado" o "repetido"
+     */
+    public String insertarOrdenado(int id, Arbol aux) {
         if (raiz == null) {
             Arbol nuevoArbol = new Arbol(id);
             raiz = nuevoArbol;
@@ -60,7 +70,14 @@ public class MetodosArboles {
         }
     }
 
-    public Arbol buscarArbol(int id, Arbol aux) { // buscar un nodo del Arbol, aux es un auxiliar de la raíz
+    /**
+     * buscar un nodo del Arbol, aux es un
+     *
+     * @param id identificador del nodo del árbol que buscamos
+     * @param aux auxiliar de la raíz del árbol
+     * @return nodo del arbol deseado o null
+     */
+    public Arbol buscarArbol(int id, Arbol aux) {
         if (raiz == null) {
             return null;
         } else {
@@ -82,7 +99,12 @@ public class MetodosArboles {
         }
     }
 
-    public void imprimirOrden(Arbol aux) { // método que imprime los nodos: izquierda, raiz y derecha
+    /**
+     * método que imprime los nodos: izquierda, raiz y derecha
+     *
+     * @param aux auxiliar de la raíz del árbol
+     */
+    public void imprimirOrden(Arbol aux) {
         if (aux == null) { // condicion de parada para la recursividad
             comparaciones++;
             lineas += 2;
@@ -97,7 +119,12 @@ public class MetodosArboles {
         asignaciones++;
     }
 
-    public void llenarArbol(int n) { // método que llena el arbol de forma ordenada
+    /**
+     * método que llena el arbol de forma ordenada
+     *
+     * @param n es la cantidad de nodos que requiere el árbol
+     */
+    public void llenarArbol(int n) {
         raiz = null; // se iguala a null para poder crear otros árboles
         insertarOrdenado(n / 2, raiz);
         for (int i = 0; i <= n; i++) {
@@ -105,7 +132,12 @@ public class MetodosArboles {
         }
     }
 
-    public void amplitud(Arbol value) {//método que imprime el árbol en amplitud
+    /**
+     * método que imprime el árbol en amplitud
+     *
+     * @param value auxiliar de la raíz del árbol
+     */
+    public void amplitud(Arbol value) {
         Arbol aux;
         Cola cola, colaAux;
         lineas += 2;
@@ -149,14 +181,20 @@ public class MetodosArboles {
         }
     }
 
+    /**
+     * método que llama a la profundidad del árbol y muestra sus asignaciones,
+     * comparaciones, lineas de código ejecutadas y su duración
+     *
+     * @param raiz auxiliar de la raíz del árbol
+     */
     public void datosProfundidad(Arbol raiz) {
         asignaciones = 0;
         comparaciones = 0;
-        lineas = 0;       
+        lineas = 0;
         long starts, ends;
-        starts = System.currentTimeMillis();
+        starts = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de profundidad
         imprimirOrden(raiz);
-        ends = System.currentTimeMillis();
+        ends = System.currentTimeMillis(); // termina el conteo del tiempo en que durará el algoritmo de profundidad
         long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
@@ -165,14 +203,20 @@ public class MetodosArboles {
         System.out.println("====================================");
     }
 
+    /**
+     * método que llama a la amplitud del árbol y muestra sus asignaciones,
+     * comparaciones, lineas de código ejecutadas y su duración
+     *
+     * @param raiz auxiliar de la raíz del árbol
+     */
     public void datosAmplitud(Arbol raiz) {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
         long starts, ends;
-        starts = System.currentTimeMillis();
+        starts = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de amplitud
         amplitud(raiz);
-        ends = System.currentTimeMillis();
+        ends = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de amplitud
         long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);

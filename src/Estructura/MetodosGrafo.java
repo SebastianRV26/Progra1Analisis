@@ -5,8 +5,6 @@
  */
 package Estructura;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Random;
 
 /**
@@ -17,7 +15,13 @@ public class MetodosGrafo {
 
     public static MetodosGrafo instance = null; // instancia de la clase MetodosGrafo
 
-    public static MetodosGrafo getInstance() { // singleton para que exista únicamente una instacia de la clase
+    /**
+     * singleton para que exista únicamente una instacia de la clase
+     * MetodosGrafo
+     *
+     * @return la instancia única del objeto MetodosGrafo
+     */
+    public static MetodosGrafo getInstance() {
         if (instance == null) {
             instance = new MetodosGrafo();
         }
@@ -28,9 +32,14 @@ public class MetodosGrafo {
     public int asignaciones = 0;
     public int comparaciones = 0;
     public int lineas = 0;
-    public boolean global;
 
-    public String insertarVertices(int ID) { // método que inserta un vértice para el grafo
+    /**
+     * método que inserta un vértice para el grafo
+     *
+     * @param ID el identificador del vértice que deseamos crear
+     * @return "Insertado" o ""
+     */
+    public String insertarVertices(int ID) {
         vertice nuevo = new vertice(ID, false);
         if (grafo == null) {
             grafo = nuevo;
@@ -41,7 +50,13 @@ public class MetodosGrafo {
         return "";
     }
 
-    public vertice buscar(int id) { // método que busca un vértice del grafo
+    /**
+     * método que busca un vértice del grafo
+     *
+     * @param id el id del vertice que deseamos buscar
+     * @return vértice encontrado o null
+     */
+    public vertice buscar(int id) {
         vertice aux = grafo;
         while (aux != null) {
             if (aux.ID == id) {
@@ -52,7 +67,15 @@ public class MetodosGrafo {
         return null;
     }
 
-    public String insertarArco(vertice origen, vertice destino, int peso) { // método que inserta un arco para el grafo
+    /**
+     * método que inserta un arco para el grafo
+     *
+     * @param origen vértice de origen de arco al que queremos insertar
+     * @param destino vértice destino de arco al que queremos insertar
+     * @param peso el peso del arco, número entre el 1 al 10
+     * @return "Insertado" o "No se pueden repetir arcos"
+     */
+    public String insertarArco(vertice origen, vertice destino, int peso) {
         if (buscar(origen, destino) == null) {
             arco nuevo = new arco(peso);
             nuevo.destino = destino;
@@ -68,7 +91,14 @@ public class MetodosGrafo {
         return "No se pueden repetir arcos";
     }
 
-    public arco buscar(vertice origen, vertice destino) { // método que busca un arco del grafo
+    /**
+     * método que busca un arco del grafo
+     *
+     * @param origen vértice de origen de arco al que queremos buscar
+     * @param destino vértice destino de arco al que queremos buscar
+     * @return el arco deseado o null
+     */
+    public arco buscar(vertice origen, vertice destino) {
         if (origen.sigA != null) {
             arco aux = origen.sigA;
             while (aux != null) {
@@ -81,8 +111,12 @@ public class MetodosGrafo {
         return null;
     }
 
-    public void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
-    {
+    /**
+     * metodo que imprime el inicio en profundidad
+     *
+     * @param grafo es el primer vértice del grafo
+     */
+    public void profundidad(vertice grafo) {
         if ((grafo != null) && (grafo.marca == false)) {
             grafo.marca = true;
             arco aux = grafo.sigA;
@@ -109,9 +143,12 @@ public class MetodosGrafo {
         }
     }
 
-
-    public void amplitud(vertice grafo) // metodo para imprimir el inicio en amplitud
-    {
+    /**
+     * metodo para imprimir el inicio en amplitud
+     *
+     * @param grafo es el primer vértice del grafo
+     */
+    public void amplitud(vertice grafo) {
         if (grafo == null) {
             comparaciones++;
             lineas++;
@@ -135,7 +172,7 @@ public class MetodosGrafo {
                 }
                 // System.out.println("-----------");
                 temp = temp.sigV;
-                lineas+=2;
+                lineas += 2;
                 comparaciones++;
                 asignaciones++;
             }
@@ -144,7 +181,12 @@ public class MetodosGrafo {
         }
     }
 
-    public void llenarGrafo(int n) { // método que llena el grafo fuertemente conexo
+    /**
+     * método que llena el grafo fuertemente conexo
+     *
+     * @param n es la cantidad de nodos que requiere el grafo
+     */
+    public void llenarGrafo(int n) {
         vertice origen, destino;
         for (int i = 0; i <= n; i++) { // primero se insertan los vertices
             insertarVertices(i);
@@ -162,7 +204,11 @@ public class MetodosGrafo {
         quitarMarca(grafo);
     }
 
-
+    /**
+     * método que establece la marca de todos los nodos del grafo como false
+     *
+     * @param grafo es el primer vértice del grafo
+     */
     public void quitarMarca(vertice grafo) {
         vertice aux = grafo;
         while (aux != null) {
@@ -171,69 +217,47 @@ public class MetodosGrafo {
         }
     }
 
-    public void datosProfundidad(vertice grafo) { // método que llama a la profundidad para grafo y muestra sus asignaciones, 
-        //comparaciones, lineas de código ejecutadas y su duración
+    /**
+     * método que llama a la profundidad para grafo y muestra sus asignaciones,
+     * comparaciones, lineas de código ejecutadas y su duración
+     *
+     * @param grafo es el primer vértice del grafo
+     */
+    public void datosProfundidad(vertice grafo) {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
         long starts, ends;
-        starts = System.currentTimeMillis();
+        starts = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de profundidad
         profundidad(grafo);
-        ends = System.currentTimeMillis();
+        ends = System.currentTimeMillis(); // termina el conteo del tiempo en que durará el algoritmo de profundidad
         long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
-        System.out.println("Tiempo de ejecucion: " + totalTime + " ms" );
+        System.out.println("Tiempo de ejecucion: " + totalTime + " ms");
         System.out.println("====================================");
     }
 
-    public void datosAmplitud(vertice grafo) { // método que llama a la amplitud para grafo y muestra sus asignaciones, 
-        //comparaciones, lineas de código ejecutadas y su duración
+    /**
+     * método que llama a la amplitud para grafo y muestra sus asignaciones,
+     * comparaciones, lineas de código ejecutadas y su duración
+     *
+     * @param grafo es el primer vértice del grafo
+     */
+    public void datosAmplitud(vertice grafo) {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
         long starts, ends;
-        starts = System.currentTimeMillis();
+        starts = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de amplitud
         amplitud(grafo);
-        ends = System.currentTimeMillis();
+        ends = System.currentTimeMillis(); // termina el conteo del tiempo en que durará el algoritmo de amplitud
         long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
-        System.out.println("Tiempo de ejecucion: "  + totalTime + " ms");
+        System.out.println("Tiempo de ejecucion: " + totalTime + " ms");
         System.out.println("====================================");
-    }
-
-    public int gradoExterno(vertice grafo) { // para saber si es fuertemente conexo, LUEGO ELIMINAR
-        int cont = 0;
-        if (grafo.sigA != null) {
-            arco aux = grafo.sigA;
-            while (aux != null) {
-                cont++;
-                aux = aux.sigA;
-            }
-        }
-        return cont;
-    }
-
-    public void grafoFuertementeConexo(vertice grafo) { // Método para SABER si es un grafo fuermenete conexo luego ELIMINAR
-        //se parte de que es un grafo no dirigido (no tiene flecha)
-        //grafo completo, que todos sus vertices apunten a todos los vertices (excepto a él mismo xD)
-        int vertices = 0;
-        vertice temp = grafo;
-        while (temp != null) { //se cuentan los vértices
-            vertices++;
-            temp = temp.sigV;
-        }
-        vertice aux = grafo;
-        while (aux != null) {
-            if (gradoExterno(aux) != vertices - 1) { //los vertices tienen que tener cantidad de vertices-1 
-                System.out.println("No es un grafo FuertementeConexo");
-                return;
-            }
-            aux = aux.sigV;
-        }
-        System.out.println("Es un grafo FuertementeConexo");
     }
 }

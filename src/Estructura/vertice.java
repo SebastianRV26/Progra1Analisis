@@ -11,12 +11,18 @@ package Estructura;
  */
 public class vertice { //vertice de un grafo
 
-    public int ID;//Nombre del vertice
-    public vertice sigV;//Puntero para referenciar a los siguientes vertices
-    public arco sigA;//Puntero para hacer referencia a los arcos
-    public boolean marca;//Marca, utilizado para los diferentes imprimir y recorridos recursivos
+    public int ID; // identificador del vertice
+    public vertice sigV; // Puntero para referenciar a los siguientes vertices
+    public arco sigA; // Puntero para hacer referencia a los arcos
+    public boolean marca; // Marca, utilizado para los diferentes imprimir y recorridos recursivos
 
-    public vertice(int ID, boolean m) { // constructor
+    /**
+     * constructor del vértice
+     *
+     * @param ID identificador del vertice
+     * @param m marca del vértice
+     */
+    public vertice(int ID, boolean m) {
         this.ID = ID;
         this.marca = m;
     }
