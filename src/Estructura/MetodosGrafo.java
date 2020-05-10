@@ -96,7 +96,7 @@ public class MetodosGrafo {
                 // System.out.println("-----------");
                 profundidad(aux.destino);
                 aux = aux.sigA;
-                lineas += 2;
+                lineas += 3;
                 comparaciones++;
                 asignaciones += 2;
             }
@@ -119,7 +119,8 @@ public class MetodosGrafo {
         } else {
             vertice temp = grafo;
             asignaciones++;
-            lineas++;
+            comparaciones++;
+            lineas+=2;
             while (temp != null) {
                 // System.out.println("Vertice: " + temp.ID);
                 arco aux = temp.sigA;
