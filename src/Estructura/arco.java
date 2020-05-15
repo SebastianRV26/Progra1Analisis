@@ -15,7 +15,12 @@ public class arco { //arco de un grafo
     public vertice destino;//Como es un grafo multilista, para hacer referencia al destino
     public int peso;//Peso del arco
 
-    public arco(int p) { // constructor
+    /**
+     * constructor del arco
+     *
+     * @param p peso del arco
+     */
+    public arco(int p) { // 
         peso = p;
     }
 }
