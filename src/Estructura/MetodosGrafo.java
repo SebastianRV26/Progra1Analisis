@@ -83,19 +83,19 @@ public class MetodosGrafo {
 
     public void profundidad(vertice grafo) //metodo que imprime el inicio en profundidad
     {
-        if ((grafo != null) && (grafo.marca == false)) {
-            grafo.marca = true;
-            arco aux = grafo.sigA;
+        if ((grafo != null) && (grafo.marca == false)) {///2
+            grafo.marca = true;//1
+            arco aux = grafo.sigA;//1
             lineas += 3;
             comparaciones += 2;
             asignaciones += 2;
-            while (aux != null) {
+            while (aux != null) {//n
                 // System.out.println("Origen: " + grafo.ID);
                 // System.out.println("Peso: " + aux.peso);
                 // System.out.println("Destino: " + aux.destino.ID);
                 // System.out.println("-----------");
-                profundidad(aux.destino);
-                aux = aux.sigA;
+                profundidad(aux.destino);//n*n
+                aux = aux.sigA;//n
                 lineas += 3;
                 comparaciones++;
                 asignaciones += 2;
@@ -112,30 +112,30 @@ public class MetodosGrafo {
 
     public void amplitud(vertice grafo) // metodo para imprimir el inicio en amplitud
     {
-        if (grafo == null) {
+        if (grafo == null) {//1
             comparaciones++;
             lineas++;
             //System.out.println("No hay grafo");
-        } else {
-            vertice temp = grafo;
+        } else {//1
+            vertice temp = grafo;//1
             asignaciones++;
             comparaciones++;
             lineas+=2;
-            while (temp != null) {
+            while (temp != null) {//n
                 // System.out.println("Vertice: " + temp.ID);
-                arco aux = temp.sigA;
+                arco aux = temp.sigA;//n
                 lineas += 2;
                 comparaciones++;
                 asignaciones++;
-                while (aux != null) {
+                while (aux != null) {//n*n
                     // System.out.println("Destino: " + aux.destino.ID);
-                    aux = aux.sigA;
+                    aux = aux.sigA;//n*n
                     lineas += 2;
                     comparaciones++;
                     asignaciones++;
                 }
                 // System.out.println("-----------");
-                temp = temp.sigV;
+                temp = temp.sigV;//n
                 lineas+=2;
                 comparaciones++;
                 asignaciones++;

@@ -59,14 +59,14 @@ public class Cola {
     }
 
     public Arbol Extraer() {
-        if (!colaVacia()) {
-            Arbol aux = inicioCola.value;
+        if (!colaVacia()) {//5
+            Arbol aux = inicioCola.value;//1
             lineasCola+=2;
             comparacionesCola++;
             asignacionesCola+=2;
-            if (inicioCola == finalCola) {
+            if (inicioCola == finalCola) {//1
                 inicioCola = null;
-                finalCola = null;
+                finalCola = null;//2
                 lineasCola += 3;
                 comparacionesCola++;
                 asignacionesCola += 2;

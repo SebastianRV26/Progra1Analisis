@@ -83,16 +83,16 @@ public class MetodosArboles {
     }
 
     public void imprimirOrden(Arbol aux) { // método que imprime los nodos: izquierda, raiz y derecha
-        if (aux == null) { // condicion de parada para la recursividad
+        if (aux == null) { // condicion de parada para la recursividad         //1
             comparaciones++;
             lineas += 2;
             return;
         }
-        imprimirOrden(aux.izq);
+        imprimirOrden(aux.izq);//n
         lineas++;
         asignaciones++;
         //System.out.println(aux.id);
-        imprimirOrden(aux.der);
+        imprimirOrden(aux.der);//n
         lineas++;
         asignaciones++;
     }
@@ -109,26 +109,26 @@ public class MetodosArboles {
         Arbol aux;
         Cola cola, colaAux;
         lineas += 2;
-        if (value != null) {
-            cola = new Cola();
-            colaAux = new Cola();
-            cola.Insertar(value);
+        if (value != null) {//1
+            cola = new Cola();//1
+            colaAux = new Cola();//1
+            cola.Insertar(value);//13
             lineas += 4;
             comparaciones++;
             asignaciones += 3;
-            while (!cola.colaVacia()) {
-                colaAux.Insertar(aux = cola.Extraer());
+            while (!cola.colaVacia()) {//5n
+                colaAux.Insertar(aux = cola.Extraer());//(13+14)n
                 lineas += 2;
                 comparaciones++;
                 asignaciones += 4;
-                if (aux.izq != null) {
-                    cola.Insertar(aux.izq);
+                if (aux.izq != null) {//1*n
+                    cola.Insertar(aux.izq);//13*n
                     lineas += 2;
                     comparaciones++;
                     asignaciones++;
                 }
-                if (aux.der != null) {
-                    cola.Insertar(aux.der);
+                if (aux.der != null) {//n
+                    cola.Insertar(aux.der);//13*n
                     lineas += 2;
                     comparaciones++;
                     asignaciones++;
@@ -153,10 +153,13 @@ public class MetodosArboles {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;       
-        long starts, ends;
+        long starts;
+        long ends;
         starts = System.currentTimeMillis();
         imprimirOrden(raiz);
         ends = System.currentTimeMillis();
+        System.out.println(starts);
+        System.out.println(ends);
         long totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
