@@ -117,19 +117,19 @@ public class MetodosGrafo {
      * @param grafo es el primer vértice del grafo
      */
     public void profundidad(vertice grafo) {
-        if ((grafo != null) && (grafo.marca == false)) {
-            grafo.marca = true;
-            arco aux = grafo.sigA;
+        if ((grafo != null) && (grafo.marca == false)) {//2 * n = 2n
+            grafo.marca = true;//n
+            arco aux = grafo.sigA;//n
             lineas += 3;
             comparaciones += 2;
             asignaciones += 2;
-            while (aux != null) {//n
+            while (aux != null) {//n*n = n a la 2
                 // System.out.println("Origen: " + grafo.ID);
                 // System.out.println("Peso: " + aux.peso);
                 // System.out.println("Destino: " + aux.destino.ID);
                 // System.out.println("-----------");
-                profundidad(aux.destino);//n*n
-                aux = aux.sigA;//n
+                profundidad(aux.destino);//n*n = n a la 2
+                aux = aux.sigA;//n*n = n a la 2
                 lineas += 3;
                 comparaciones++;
                 asignaciones += 2;
@@ -141,6 +141,7 @@ public class MetodosGrafo {
             comparaciones++;
             return;
         }
+        //Total medicion analitica 3n a la 2 + 4n 
     }
 
     /**
@@ -149,30 +150,30 @@ public class MetodosGrafo {
      * @param grafo es el primer vértice del grafo
      */
     public void amplitud(vertice grafo) {
-        if (grafo == null) {
+        if (grafo == null) {//1
             comparaciones++;
             lineas++;
             //System.out.println("No hay grafo");
-        } else {//1
+        } else {
             vertice temp = grafo;//1
             asignaciones++;
             comparaciones++;
             lineas+=2;
             while (temp != null) {//n
                 // System.out.println("Vertice: " + temp.ID);
-                arco aux = temp.sigA;//n
+                arco aux = temp.sigA;//n == 2n
                 lineas += 2;
                 comparaciones++;
                 asignaciones++;
-                while (aux != null) {//n*n
+                while (aux != null) {//n*n = n a la 2
                     // System.out.println("Destino: " + aux.destino.ID);
-                    aux = aux.sigA;//n*n
+                    aux = aux.sigA;//n*n = n ala 2
                     lineas += 2;
                     comparaciones++;
                     asignaciones++;
                 }
                 // System.out.println("-----------");
-                temp = temp.sigV;
+                temp = temp.sigV; //n
                 lineas += 2;
                 comparaciones++;
                 asignaciones++;
@@ -180,6 +181,7 @@ public class MetodosGrafo {
             lineas++;
             comparaciones++;
         }
+          //Total medicion analitica 2n a la 2 + 3n + 2
     }
 
     /**

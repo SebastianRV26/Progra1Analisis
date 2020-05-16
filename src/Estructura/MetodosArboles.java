@@ -100,12 +100,13 @@ public class MetodosArboles {
     }
 
     /**
-     * método que imprime los nodos: izquierda, raiz y derecha
+     * método que imprime los nodos del arbol en en siguiente orden: 
+     * izquierda, raiz y derecha
      *
      * @param aux auxiliar de la raíz del árbol
      */
     public void imprimirOrden(Arbol aux) {
-        if (aux == null) { // condicion de parada para la recursividad
+        if (aux == null) { // condicion de parada para la recursividad   n a la 2
             comparaciones++;
             lineas += 2;
             return;
@@ -117,6 +118,8 @@ public class MetodosArboles {
         imprimirOrden(aux.der);//n
         lineas++;
         asignaciones++;
+        
+          //Total medicion analitica n a la 2 + 2n
     }
 
     /**
@@ -144,30 +147,32 @@ public class MetodosArboles {
         if (value != null) {//1
             cola = new Cola();//1
             colaAux = new Cola();//1
-            cola.Insertar(value);//13
-            lineas += 4;
+            cola.Insertar(value);//12
+            lineas += 4;//16
             comparaciones++;
             asignaciones += 3;
-            while (!cola.colaVacia()) {//5n
-                colaAux.Insertar(aux = cola.Extraer());//(13+14)n
+            while (!cola.colaVacia()) {//4n
+                colaAux.Insertar(aux = cola.Extraer());//(12+11)n = 23n
                 lineas += 2;
                 comparaciones++;
                 asignaciones += 4;
                 if (aux.izq != null) {//1*n
-                    cola.Insertar(aux.izq);//13*n
+                    cola.Insertar(aux.izq);//12*n
                     lineas += 2;
                     comparaciones++;
                     asignaciones++;
                 }
                 if (aux.der != null) {//n
-                    cola.Insertar(aux.der);//13*n
+                    cola.Insertar(aux.der);//12*n
                     lineas += 2;
                     comparaciones++;
                     asignaciones++;
                 }
                 lineas += 2;
             }
-            // colaAux.imprimirCola();
+            // colaAux.imprimirCola(); //5n + 3
+            
+            //  //Total medicion analitica  53n + 15 (Falta sumarle el imprimir cola)
             lineas += 2;
             comparaciones++;
             asignaciones++;
