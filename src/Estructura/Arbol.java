@@ -6,8 +6,8 @@
 package Estructura;
 
 /**
- *
- * @author edubi
+ * Fecha inicio: 29/04/2020 
+ * Ultima modificación: 29/04/2020
  */
 public class Arbol { // clase árbol para árboles binarios
 

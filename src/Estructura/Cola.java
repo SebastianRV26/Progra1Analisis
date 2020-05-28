@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- *
- * @author edubi
+ * Fecha inicio: 01/05/2020
+ * Ultima modificación:14/05/2020
  */
 public class Cola {
 
@@ -26,7 +26,11 @@ public class Cola {
     }
 
     /**
-     * metodo que permite saber cuando una lista
+     *  Fecha inicio: 01/05/2020
+     *  Ultima modificación:14/05/2020
+     * 
+     * 
+     * Metodo que permite saber cuando una lista
      * tipo cola esta vacia o no
      */
     public boolean colaVacia() {
@@ -41,12 +45,14 @@ public class Cola {
   //Total medicion analitica 3
     }
 
-   /**
-    * Metodo que permite insertar en la lista tipo cola
-    * 
-    * @param aux  es el nuevo nodo que se va insertar
-    * en la lista tipo cola
-    */
+    /**
+     * Fecha inicio: 01/05/2020
+     * Ultima modificación: 14/05/2020
+     *
+     * Metodo que permite insertar en la lista tipo cola
+     *
+     * @param aux es el nuevo nodo que se va insertar en la lista tipo cola
+     */
     public void Insertar(Arbol aux) {
         Nodo nuevo = new Nodo();//1
         nuevo.value = aux;//1
@@ -68,8 +74,13 @@ public class Cola {
         //  //Total medicion analitica 12
     }
     /**
+     * Fecha inicio: 01/05/2020
+     * Ultima modificación: 14/05/2020
+     * 
      * metodo  que permite eliminar nodos de 
      * la lista tipo cola
+     * 
+     * @return Devuelve el valor a eliminar o null si no existe el elemento 
      */
     public Arbol Extraer() {
         if (!colaVacia()) {//4
@@ -98,6 +109,8 @@ public class Cola {
     }
 
     /**
+     * Fecha inicio: 01/05/2020
+     * Ultima modificación: 14/05/2020
      * 
      *Metodo que permite recorer el arbol nodo por nodo y  los va guardando
      * en una lista tipo cola, para su posterior impresion

@@ -9,14 +9,18 @@ import java.util.Random;
 
 /**
  *
- * @author Sebas
+ * Fecha inicio: 29/04/2020 
+ * Ultima modificación:14/05/2020
  */
 public class MetodosGrafo {
 
     public static MetodosGrafo instance = null; // instancia de la clase MetodosGrafo
 
     /**
-     * singleton para que exista únicamente una instacia de la clase
+     * Fecha inicio: 29/04/2020 
+     * Ultima modificación: 29/04/2020
+     * 
+     * Singleton para que exista únicamente una instacia de la clase
      * MetodosGrafo
      *
      * @return la instancia única del objeto MetodosGrafo
@@ -34,7 +38,10 @@ public class MetodosGrafo {
     public int lineas = 0;
 
     /**
-     * método que inserta un vértice para el grafo
+     * Fecha inicio: 29/04/2020 
+     * Ultima modificación: 29/04/2020
+     * 
+     * Método que inserta un vértice para el grafo
      *
      * @param ID el identificador del vértice que deseamos crear
      * @return "Insertado" o ""
@@ -51,7 +58,10 @@ public class MetodosGrafo {
     }
 
     /**
-     * método que busca un vértice del grafo
+     * Fecha inicio: 29/04/2020 
+     * Ultima modificación: 29/04/2020
+     * 
+     * Método que busca un vértice del grafo
      *
      * @param id el id del vertice que deseamos buscar
      * @return vértice encontrado o null
@@ -68,7 +78,9 @@ public class MetodosGrafo {
     }
 
     /**
-     * método que inserta un arco para el grafo
+     * Fecha inicio: 29/04/2020 
+     * Ultima modificación: 29/04/2020
+     * Método que inserta un arco para el grafo
      *
      * @param origen vértice de origen de arco al que queremos insertar
      * @param destino vértice destino de arco al que queremos insertar
@@ -92,6 +104,9 @@ public class MetodosGrafo {
     }
 
     /**
+     *  Fecha inicio: 29/04/2020 
+     * Ultima modificación: 29/04/2020
+     * 
      * método que busca un arco del grafo
      *
      * @param origen vértice de origen de arco al que queremos buscar
@@ -110,8 +125,37 @@ public class MetodosGrafo {
         }
         return null;
     }
+     /**
+     *  Fecha inicio:  06/05/2020
+     * Ultima modificación:09/05/2020
+     * 
+     * método que llena el grafo fuertemente conexo
+     *
+     * @param n es la cantidad de nodos que requiere el grafo
+     */
+    public void llenarGrafo(int n) {
+        vertice origen, destino;
+        for (int i = 0; i <= n; i++) { // primero se insertan los vertices
+            insertarVertices(i);
+        }
+        for (int i = 0; i <= n; i++) { // luego se insertan los arcos
+            origen = buscar(i);
+            for (int j = 0; j < n; j++) { // para que el grafo sea fuertemente conexo 
+                Random random = new Random();
+                destino = buscar(j);
+                if (destino.ID != origen.ID) {
+                    insertarArco(origen, destino, random.nextInt(11) + 1);
+                }
+            }
+        }
+        quitarMarca(grafo);
+    }
+
 
     /**
+     * Fecha inicio: 29/04/2020 
+     * Ultima modificación: 14/05/2020
+     * 
      * metodo que imprime el inicio en profundidad
      *
      * @param grafo es el primer vértice del grafo
@@ -145,6 +189,9 @@ public class MetodosGrafo {
     }
 
     /**
+     * Fecha inicio: 29/04/2020 
+     * Ultima modificación: 14/05/2020
+     * 
      * metodo para imprimir el inicio en amplitud
      *
      * @param grafo es el primer vértice del grafo
@@ -153,7 +200,7 @@ public class MetodosGrafo {
         if (grafo == null) {//1
             comparaciones++;
             lineas++;
-            //System.out.println("No hay grafo");
+            //System.out.println("No hay grafo");=
         } else {
             vertice temp = grafo;//1
             asignaciones++;
@@ -161,7 +208,7 @@ public class MetodosGrafo {
             lineas+=2;
             while (temp != null) {//n
                 // System.out.println("Vertice: " + temp.ID);
-                arco aux = temp.sigA;//n == 2n
+                arco aux = temp.sigA;//n == n
                 lineas += 2;
                 comparaciones++;
                 asignaciones++;
@@ -181,33 +228,14 @@ public class MetodosGrafo {
             lineas++;
             comparaciones++;
         }
-          //Total medicion analitica 2n a la 2 + 3n + 2
+          //Total medicion analitica 2n + 3n + 2
     }
 
-    /**
-     * método que llena el grafo fuertemente conexo
-     *
-     * @param n es la cantidad de nodos que requiere el grafo
-     */
-    public void llenarGrafo(int n) {
-        vertice origen, destino;
-        for (int i = 0; i <= n; i++) { // primero se insertan los vertices
-            insertarVertices(i);
-        }
-        for (int i = 0; i <= n; i++) { // luego se insertan los arcos
-            origen = buscar(i);
-            for (int j = 0; j < n; j++) { // para que el grafo sea fuertemente conexo 
-                Random random = new Random();
-                destino = buscar(j);
-                if (destino.ID != origen.ID) {
-                    insertarArco(origen, destino, random.nextInt(11) + 1);
-                }
-            }
-        }
-        quitarMarca(grafo);
-    }
 
     /**
+     *  Fecha inicio: 29/04/2020 
+     * Ultima modificación: 29/04/2020
+     * 
      * método que establece la marca de todos los nodos del grafo como false
      *
      * @param grafo es el primer vértice del grafo
@@ -221,6 +249,9 @@ public class MetodosGrafo {
     }
 
     /**
+     * Fecha inicio: 09/05/2020
+     * Ultima modificación:09/05/2020
+     * 
      * método que llama a la profundidad para grafo y muestra sus asignaciones,
      * comparaciones, lineas de código ejecutadas y su duración
      *
@@ -234,7 +265,7 @@ public class MetodosGrafo {
         starts = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de profundidad
         profundidad(grafo);
         ends = System.currentTimeMillis(); // termina el conteo del tiempo en que durará el algoritmo de profundidad
-        long totalTime = ends - starts;
+        double totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
@@ -243,6 +274,9 @@ public class MetodosGrafo {
     }
 
     /**
+     * Fecha inicio: 09/05/2020
+     * Ultima modificación:09/05/2020
+     * 
      * método que llama a la amplitud para grafo y muestra sus asignaciones,
      * comparaciones, lineas de código ejecutadas y su duración
      *
@@ -256,7 +290,7 @@ public class MetodosGrafo {
         starts = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de amplitud
         amplitud(grafo);
         ends = System.currentTimeMillis(); // termina el conteo del tiempo en que durará el algoritmo de amplitud
-        long totalTime = ends - starts;
+        double totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
