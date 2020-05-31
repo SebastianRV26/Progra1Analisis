@@ -17,10 +17,9 @@ public class MetodosGrafo {
     public static MetodosGrafo instance = null; // instancia de la clase MetodosGrafo
 
     /**
-     * Fecha inicio: 29/04/2020 
-     * Ultima modificación: 29/04/2020
-     * 
-     * Singleton para que exista únicamente una instacia de la clase
+     * Fecha Inicio: 29/04/2020. Fecha última modificación: 29/04/2020.
+     *
+     * singleton para que exista únicamente una instacia de la clase
      * MetodosGrafo
      *
      * @return la instancia única del objeto MetodosGrafo
@@ -38,10 +37,9 @@ public class MetodosGrafo {
     public int lineas = 0;
 
     /**
-     * Fecha inicio: 29/04/2020 
-     * Ultima modificación: 29/04/2020
-     * 
-     * Método que inserta un vértice para el grafo
+     * Fecha Inicio: 29/04/2020. Fecha última modificación: 29/04/2020.
+     *
+     * método que inserta un vértice para el grafo
      *
      * @param ID el identificador del vértice que deseamos crear
      * @return "Insertado" o ""
@@ -58,10 +56,9 @@ public class MetodosGrafo {
     }
 
     /**
-     * Fecha inicio: 29/04/2020 
-     * Ultima modificación: 29/04/2020
-     * 
-     * Método que busca un vértice del grafo
+     * Fecha Inicio: 29/04/2020. Fecha última modificación: 29/04/2020.
+     *
+     * método que busca un vértice del grafo
      *
      * @param id el id del vertice que deseamos buscar
      * @return vértice encontrado o null
@@ -78,9 +75,9 @@ public class MetodosGrafo {
     }
 
     /**
-     * Fecha inicio: 29/04/2020 
-     * Ultima modificación: 29/04/2020
-     * Método que inserta un arco para el grafo
+     * Fecha Inicio: 29/04/2020. Fecha última modificación: 29/04/2020.
+     *
+     * método que inserta un arco para el grafo
      *
      * @param origen vértice de origen de arco al que queremos insertar
      * @param destino vértice destino de arco al que queremos insertar
@@ -104,9 +101,8 @@ public class MetodosGrafo {
     }
 
     /**
-     *  Fecha inicio: 29/04/2020 
-     * Ultima modificación: 29/04/2020
-     * 
+     * Fecha Inicio: 29/04/2020. Fecha última modificación: 29/04/2020.
+     *
      * método que busca un arco del grafo
      *
      * @param origen vértice de origen de arco al que queremos buscar
@@ -153,9 +149,8 @@ public class MetodosGrafo {
 
 
     /**
-     * Fecha inicio: 29/04/2020 
-     * Ultima modificación: 14/05/2020
-     * 
+     * Fecha Inicio: 29/04/2020. Fecha última modificación: 14/05/2020.
+     *
      * metodo que imprime el inicio en profundidad
      *
      * @param grafo es el primer vértice del grafo
@@ -189,9 +184,8 @@ public class MetodosGrafo {
     }
 
     /**
-     * Fecha inicio: 29/04/2020 
-     * Ultima modificación: 14/05/2020
-     * 
+     * Fecha Inicio: 29/04/2020. Fecha última modificación: 14/05/2020.
+     *
      * metodo para imprimir el inicio en amplitud
      *
      * @param grafo es el primer vértice del grafo
@@ -205,7 +199,7 @@ public class MetodosGrafo {
             vertice temp = grafo;//1
             asignaciones++;
             comparaciones++;
-            lineas+=2;
+            lineas += 2;
             while (temp != null) {//n
                 // System.out.println("Vertice: " + temp.ID);
                 arco aux = temp.sigA;//n == n
@@ -249,9 +243,8 @@ public class MetodosGrafo {
     }
 
     /**
-     * Fecha inicio: 09/05/2020
-     * Ultima modificación:09/05/2020
-     * 
+     * Fecha Inicio: 06/05/2020. Fecha última modificación: 09/05/2020.
+     *
      * método que llama a la profundidad para grafo y muestra sus asignaciones,
      * comparaciones, lineas de código ejecutadas y su duración
      *
@@ -274,9 +267,8 @@ public class MetodosGrafo {
     }
 
     /**
-     * Fecha inicio: 09/05/2020
-     * Ultima modificación:09/05/2020
-     * 
+     * Fecha Inicio: 06/05/2020. Fecha última modificación: 09/05/2020.
+     *
      * método que llama a la amplitud para grafo y muestra sus asignaciones,
      * comparaciones, lineas de código ejecutadas y su duración
      *

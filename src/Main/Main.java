@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * Fecha inicio: 09/05/2020
-     * Ultima modificación: 09/05/2020 
+     * Fecha inicio: 09/05/2020. Fecha última modificación: 09/05/2020
+     * 
      * método que crea los árboles de distintos tamaños y los almacena en un
      * arreglo
      *
@@ -35,8 +35,8 @@ public class Main {
     }
 
     /**
-     *  Fecha inicio:  09/05/2020 
-     * Ultima modificación: 09/05/2020 
+     * Fecha inicio: 09/05/2020. Fecha última modificación: 09/05/2020
+     * 
      * método que crea los grafos de distintos tamaños y los almacena en un
      * arreglo
      *
@@ -57,8 +57,7 @@ public class Main {
     }
 
     /**
-     *  Fecha inicio:  01/05/2020 
-     * Ultima modificación: 09/05/2020 
+     * Fecha inicio: 01/05/2020. Fecha última modificación: 09/05/2020
      * 
      * método que muestra la posibilidad al usuario de escoger el algoritmo que
      * desea ver y ejecuta el algoritmo seleccionado
@@ -127,8 +126,7 @@ public class Main {
     }
 
     /**
-     * Fecha inicio: 29/04/2020 
-     * Ultima modificación: 29/04/2020 
+     * Fecha inicio: 29/04/2020. Ultima modificación: 09/05/2020 
      * 
      * @param args the command line arguments
      */
