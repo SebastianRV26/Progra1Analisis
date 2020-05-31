@@ -7,14 +7,17 @@ package Estructura;
 
 /**
  *
- * @author edubi
+ * Fecha inicio: 29/04/2020 
+ * Ultima modificación:14/05/2020
  */
 public class MetodosArboles {
 
     public static MetodosArboles instance = null; // instancia de la clase MetodosArboles
 
     /**
-     * singleton para que exista únicamente una instacia de la clase
+     * Fecha inicio: 29/04/2020 
+     * Ultima modificación: 29/04/2020 
+     * Singleton para que exista únicamente una instacia de la clase
      * MetodosArboles
      *
      * @return la instancia única del objeto MetodosArboles
@@ -34,7 +37,10 @@ public class MetodosArboles {
     public int lineas = 0;
 
     /**
-     * método que inserta un nodo en el arbol de manera ordenada
+     *  Fecha inicio: 29/04/2020 
+     * Ultima modificación:  29/04/2020 
+     * 
+     * Método que inserta un nodo en el arbol de manera ordenada
      *
      * @param id identificador del nodo del árbol
      * @param aux la raíz del árbol
@@ -70,43 +76,34 @@ public class MetodosArboles {
         }
     }
 
-    /**
-     * buscar un nodo del Arbol, aux es un
+     /**
+      * Fecha inicio:  06/05/2020
+     *  Ultima modificación:09/05/2020
+     * 
+     * Método que llena el arbol de forma ordenada
      *
-     * @param id identificador del nodo del árbol que buscamos
-     * @param aux auxiliar de la raíz del árbol
-     * @return nodo del arbol deseado o null
+     * @param n es la cantidad de nodos que requiere el árbol
      */
-    public Arbol buscarArbol(int id, Arbol aux) {
-        if (raiz == null) {
-            return null;
-        } else {
-            if (id == aux.id) {
-                return aux;
-            }
-            if (id < aux.id) {
-                if (aux.izq == null) {
-                    return null;
-                } else {
-                    return buscarArbol(id, aux.izq);
-                }
-            }
-            if (aux.der == null) {
-                return null;
-            } else {
-                return buscarArbol(id, aux.der);
-            }
+    public void llenarArbol(int n) {
+        raiz = null; // se iguala a null para poder crear otros árboles
+        insertarOrdenado(n / 2, raiz);
+        for (int i = 0; i <= n; i++) {
+            insertarOrdenado(i, raiz);
         }
     }
 
+
     /**
-     * método que imprime los nodos del arbol en en siguiente orden: 
+     *  Fecha inicio: 29/04/2020 
+     * Ultima modificación: 14/05/2020
+     * 
+     * Método que imprime los nodos del arbol en en siguiente orden: 
      * izquierda, raiz y derecha
      *
      * @param aux auxiliar de la raíz del árbol
      */
     public void imprimirOrden(Arbol aux) {
-        if (aux == null) { // condicion de parada para la recursividad   n a la 2
+        if (aux == null) { // condicion de parada para la recursividad   n^n
             comparaciones++;
             lineas += 2;
             return;
@@ -119,23 +116,14 @@ public class MetodosArboles {
         lineas++;
         asignaciones++;
         
-          //Total medicion analitica n a la 2 + 2n
+          //Total medicion analitica 3 n^n + 4n 
     }
 
-    /**
-     * método que llena el arbol de forma ordenada
-     *
-     * @param n es la cantidad de nodos que requiere el árbol
-     */
-    public void llenarArbol(int n) {
-        raiz = null; // se iguala a null para poder crear otros árboles
-        insertarOrdenado(n / 2, raiz);
-        for (int i = 0; i <= n; i++) {
-            insertarOrdenado(i, raiz);
-        }
-    }
 
     /**
+     *  Fecha inicio: 01/05/2020
+     *  Ultima modificación:14/05/2020
+     * 
      * método que imprime el árbol en amplitud
      *
      * @param value auxiliar de la raíz del árbol
@@ -187,7 +175,10 @@ public class MetodosArboles {
     }
 
     /**
-     * método que llama a la profundidad del árbol y muestra sus asignaciones,
+     * Fecha inicio: 09/05/2020
+     * Ultima modificación:09/05/2020
+     * 
+     * Método que llama a la profundidad del árbol y muestra sus asignaciones,
      * comparaciones, lineas de código ejecutadas y su duración
      *
      * @param raiz auxiliar de la raíz del árbol
@@ -200,7 +191,7 @@ public class MetodosArboles {
         starts = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de profundidad
         imprimirOrden(raiz);
         ends = System.currentTimeMillis(); // termina el conteo del tiempo en que durará el algoritmo de profundidad
-        long totalTime = ends - starts;
+        double totalTime = ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);
@@ -209,7 +200,10 @@ public class MetodosArboles {
     }
 
     /**
-     * método que llama a la amplitud del árbol y muestra sus asignaciones,
+     * Fecha inicio: 09/05/2020
+     * Ultima modificación:09/05/2020
+     * 
+     * Método que llama a la amplitud del árbol y muestra sus asignaciones,
      * comparaciones, lineas de código ejecutadas y su duración
      *
      * @param raiz auxiliar de la raíz del árbol
@@ -222,7 +216,7 @@ public class MetodosArboles {
         starts = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de amplitud
         amplitud(raiz);
         ends = System.currentTimeMillis(); // empieza el conteo del tiempo en que durará el algoritmo de amplitud
-        long totalTime = ends - starts;
+        double totalTime =  ends - starts;
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
         System.out.println("Lineas: " + lineas);

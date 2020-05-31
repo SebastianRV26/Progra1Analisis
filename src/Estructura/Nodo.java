@@ -6,12 +6,15 @@
 package Estructura;
 
 /**
- *
- * @author edubi
+ * Fecha inicio: 01/05/2020
+ * Ultima modificación:01/05/2020
+ * 
+ * Esta clase nos permite crear objetos de tipo nodo,
+ * estos objetos son los que van ha ser insertados en las 
+ * estructuras de tipo cola.
+ * 
  */
 public class Nodo {
-
     Arbol value;
     Nodo sig;
-
 }

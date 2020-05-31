@@ -6,8 +6,8 @@
 package Estructura;
 
 /**
- *
- * @author Sebas
+ *  Fecha inicio: 29/04/2020 
+  * Ultima modificación: 29/04/2020
  */
 public class vertice { //vertice de un grafo
 
