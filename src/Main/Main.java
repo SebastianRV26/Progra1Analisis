@@ -5,7 +5,10 @@
  */
 package Main;
 
-import Estructura.*;
+import Metodos.MetodosArboles;
+import Clases.Arbol;
+import Metodos.MetodosGrafo;
+import Clases.Vertice;
 import java.util.Scanner;
 
 /**
@@ -44,12 +47,12 @@ public class Main {
      * @return un arreglo con el primer vértice de los grafos de distintos
      * tamaños
      */
-    public static vertice[] crearGrafos(int[] tamannio) {
+    public static Vertice[] crearGrafos(int[] tamannio) {
         MetodosGrafo metGrafo = MetodosGrafo.getInstance();
-        vertice[] grafos = new vertice[6];
+        Vertice[] grafos = new Vertice[6];
         for (int i = 0; i < tamannio.length; i++) {
             metGrafo.llenarGrafo(tamannio[i]);
-            vertice grafo = metGrafo.grafo;
+            Vertice grafo = metGrafo.grafo;
             grafos[i] = grafo;
             metGrafo.grafo = null;
         }
@@ -70,7 +73,7 @@ public class Main {
         int[] tamannioGrafo = {100, 500,1000, 2000, 4000, 5000}; // array con los tamaños para los grafos
 
         Arbol[] arboles = crearArboles(tamannioArbol); // array con las raices de los árboles
-        vertice[] grafos = crearGrafos(tamannioGrafo); // array con los vértices de los grafos
+        Vertice[] grafos = crearGrafos(tamannioGrafo); // array con los vértices de los grafos
 
         while (true) {
             System.out.println("Digite un numero del 1 al 4 para ver los resultados de los algoritmos "

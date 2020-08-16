@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Estructura;
+package Metodos;
 
+import Clases.Arbol;
+import Clases.Nodo;
 import java.util.ArrayList;
 import java.util.Collections;
 

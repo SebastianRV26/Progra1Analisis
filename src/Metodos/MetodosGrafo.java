@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Estructura;
+package Metodos;
 
+import Clases.Arco;
+import Clases.Vertice;
 import java.util.Random;
 
 /**
@@ -31,7 +33,7 @@ public class MetodosGrafo {
         return instance;
     }
 
-    public vertice grafo;
+    public Vertice grafo;
     public int asignaciones = 0;
     public int comparaciones = 0;
     public int lineas = 0;
@@ -45,7 +47,7 @@ public class MetodosGrafo {
      * @return "Insertado" o ""
      */
     public String insertarVertices(int ID) {
-        vertice nuevo = new vertice(ID, false);
+        Vertice nuevo = new Vertice(ID, false);
         if (grafo == null) {
             grafo = nuevo;
             return "Insertado";
@@ -63,8 +65,8 @@ public class MetodosGrafo {
      * @param id el id del vertice que deseamos buscar
      * @return vértice encontrado o null
      */
-    public vertice buscar(int id) {
-        vertice aux = grafo;
+    public Vertice buscar(int id) {
+        Vertice aux = grafo;
         while (aux != null) {
             if (aux.ID == id) {
                 return aux;
@@ -84,9 +86,9 @@ public class MetodosGrafo {
      * @param peso el peso del arco, número entre el 1 al 10
      * @return "Insertado" o "No se pueden repetir arcos"
      */
-    public String insertarArco(vertice origen, vertice destino, int peso) {
+    public String insertarArco(Vertice origen, Vertice destino, int peso) {
         if (buscar(origen, destino) == null) {
-            arco nuevo = new arco(peso);
+            Arco nuevo = new Arco(peso);
             nuevo.destino = destino;
             if (origen.sigA == null) {
                 origen.sigA = nuevo;
@@ -109,9 +111,9 @@ public class MetodosGrafo {
      * @param destino vértice destino de arco al que queremos buscar
      * @return el arco deseado o null
      */
-    public arco buscar(vertice origen, vertice destino) {
+    public Arco buscar(Vertice origen, Vertice destino) {
         if (origen.sigA != null) {
-            arco aux = origen.sigA;
+            Arco aux = origen.sigA;
             while (aux != null) {
                 if (aux.destino == destino) {
                     return aux;
@@ -130,7 +132,8 @@ public class MetodosGrafo {
      * @param n es la cantidad de nodos que requiere el grafo
      */
     public void llenarGrafo(int n) {
-        vertice origen, destino;
+        Vertice origen;
+        Vertice destino;
         for (int i = 0; i <= n; i++) { // primero se insertan los vertices
             insertarVertices(i);
         }
@@ -155,10 +158,10 @@ public class MetodosGrafo {
      *
      * @param grafo es el primer vértice del grafo
      */
-    public void profundidad(vertice grafo) {
+    public void profundidad(Vertice grafo) {
         if ((grafo != null) && (grafo.marca == false)) {//2 * n = 2n
             grafo.marca = true;//n
-            arco aux = grafo.sigA;//n
+            Arco aux = grafo.sigA;//n
             lineas += 3;
             comparaciones += 2;
             asignaciones += 2;
@@ -190,19 +193,19 @@ public class MetodosGrafo {
      *
      * @param grafo es el primer vértice del grafo
      */
-    public void amplitud(vertice grafo) {
+    public void amplitud(Vertice grafo) {
         if (grafo == null) {//1
             comparaciones++;
             lineas++;
             //System.out.println("No hay grafo");=
         } else {
-            vertice temp = grafo;//1
+            Vertice temp = grafo;//1
             asignaciones++;
             comparaciones++;
             lineas += 2;
             while (temp != null) {//n
                 // System.out.println("Vertice: " + temp.ID);
-                arco aux = temp.sigA;//n == n
+                Arco aux = temp.sigA;//n == n
                 lineas += 2;
                 comparaciones++;
                 asignaciones++;
@@ -234,8 +237,8 @@ public class MetodosGrafo {
      *
      * @param grafo es el primer vértice del grafo
      */
-    public void quitarMarca(vertice grafo) {
-        vertice aux = grafo;
+    public void quitarMarca(Vertice grafo) {
+        Vertice aux = grafo;
         while (aux != null) {
             aux.marca = false;
             aux = aux.sigV;
@@ -250,7 +253,7 @@ public class MetodosGrafo {
      *
      * @param grafo es el primer vértice del grafo
      */
-    public void datosProfundidad(vertice grafo) {
+    public void datosProfundidad(Vertice grafo) {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;
@@ -274,7 +277,7 @@ public class MetodosGrafo {
      *
      * @param grafo es el primer vértice del grafo
      */
-    public void datosAmplitud(vertice grafo) {
+    public void datosAmplitud(Vertice grafo) {
         asignaciones = 0;
         comparaciones = 0;
         lineas = 0;

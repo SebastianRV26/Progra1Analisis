@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Estructura;
+package Clases;
 
 /**
  * Fecha inicio: 29/04/2020 
@@ -11,7 +11,7 @@ package Estructura;
  */
 public class Arbol { // clase árbol para árboles binarios
 
-    int id;
+    public int id;
     public Arbol izq, der;
 
     /**

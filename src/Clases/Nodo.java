@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Estructura;
+package Clases;
 
 /**
  * Fecha inicio: 01/05/2020
@@ -15,6 +15,6 @@ package Estructura;
  * 
  */
 public class Nodo {
-    Arbol value;
-    Nodo sig;
+    public Arbol value;
+    public Nodo sig;
 }

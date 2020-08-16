@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Estructura;
+package Clases;
 
 /**
  *  Fecha inicio: 29/04/2020 
   * Ultima modificación: 29/04/2020
  */
-public class vertice { //vertice de un grafo
+public class Vertice { //vertice de un grafo
 
     public int ID; // identificador del vertice
-    public vertice sigV; // Puntero para referenciar a los siguientes vertices
-    public arco sigA; // Puntero para hacer referencia a los arcos
+    public Vertice sigV; // Puntero para referenciar a los siguientes vertices
+    public Arco sigA; // Puntero para hacer referencia a los arcos
     public boolean marca; // Marca, utilizado para los diferentes imprimir y recorridos recursivos
 
     /**
@@ -22,7 +22,7 @@ public class vertice { //vertice de un grafo
      * @param ID identificador del vertice
      * @param m marca del vértice
      */
-    public vertice(int ID, boolean m) {
+    public Vertice(int ID, boolean m) {
         this.ID = ID;
         this.marca = m;
     }
